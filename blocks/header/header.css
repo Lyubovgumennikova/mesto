@@ -1,0 +1,23 @@
+.header {
+    min-width: 880px;
+    
+}
+
+@media (max-width: 1279px) {
+    .header {
+        min-width: calc(100% - 96px);
+    }
+}
+
+@media (max-width: 1023px) {
+    .header {
+        min-width: calc(100% - 48px);
+    }
+}
+@media (max-width: 767px) {
+    .header {
+        min-width: calc(100% - 32px);
+        padding-top: 16px;
+    }
+}
+}

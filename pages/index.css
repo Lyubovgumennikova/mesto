@@ -1,2 +1,16 @@
 @import "../vendor/normalize.css";
 @import "../vendor/Inter/inter.css";
+@import "../blocks/page/page.css";
+@import "../blocks/header/header.css";
+@import "../blocks/header/__logo/header__logo.css";
+@import "../blocks/header/__line/header__line.css";
+@import "../blocks/profile/profile.css";
+@import "../blocks/avatar/avatar.css";
+@import "../blocks/elements/elements.css";
+
+
+
+* {
+    outline: 1px solid red;
+  }
+  
