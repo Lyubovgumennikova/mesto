@@ -1,0 +1,24 @@
+.element__vector {
+    margin-right: 15px;
+    border: none;
+    padding: 0;
+    background: url(https://code.s3.yandex.net/web-code/dom/heart.svg) center no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    position: static;
+    opacity: 0.5;
+    transition: 0.3s;
+    align-self: center;
+}
+
+.element__vector:hover {
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.element__vector:active {
+    background: #000000;
+    overflow: hidden;
+}

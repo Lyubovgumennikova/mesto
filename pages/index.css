@@ -13,8 +13,14 @@
 @import "../blocks/profile/__info/_rectangle/profile__info_rectangle_add.css";
 @import "../blocks/avatar/avatar.css";
 @import "../blocks/elements/elements.css";
+@import "../blocks/element/element.css";
+@import "../blocks/element/__rectangle/element__rectangle.css";
+@import "../blocks/element/__mask-group/element__mask-group.css";
+@import "../blocks/element/__text/element__text.css";
+@import "../blocks/element/__vector/element__vector.css";
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__text/footer__text.css";
+
 
 
 * {
