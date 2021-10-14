@@ -1,0 +1,16 @@
+.profile__info {
+    border: none;
+    padding: 0;
+    background-color: #000000;
+    max-width: 336px;
+    justify-self: start;
+    display: grid;
+    grid-template-areas:
+    "avtor edit"
+    "hobby hobby";
+    gap: 16px 18px;
+}
+
+.profile__info::placeholder {
+    color:#FFFFFF;
+}

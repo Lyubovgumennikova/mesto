@@ -6,33 +6,34 @@
     <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
-  <body>
-    <div class="page">
+  <body class="page">
+    <div class="page__container">
       <header class="header">
         <img class="header__logo" src="./images/logo.svg" alt="" />
         <div class="header__line"></div>
       </header>
       <main class="page__main">
         <section class="profile">
-          <img class="avatar" src="./images/avatar.jpg" alt="">
-          <div class="profile__info">
-            <h1>Жак-Ив Кусто</h1>
-            <p>Исследователь океана</p>
-            <button class="edit"></button>
-          </div>
-          <button class="add"></button>
+          <img class="avatar" src="./images/avatar.jpg" alt="" />
+          <nav class="profile__info">
+            <input type="text" placeholder="Жак-Ив Кусто" class="profile__info profile__info_text_avtor">            
+            <input type="text" placeholder="Исследователь океана" class="profile__info profile__info_text_hobby">            
+            
+          </nav>
+          <button class="profile__info profile__info_rectangle_edit"></button>
+          <button class="profile__info profile__info_rectangle_add">+</button>
         </section>
         <section class="elements">
-          <ul class="element">
+          <li class="element">
             <figure class="rectangle">
-              <img class="mask" src="" alt="">
-              <figcaption>nbj<button class="vector"></button></figcaption>
+              <img class="mask" src="./images/karachayevsk.jpg" alt="карачаевск" />
+              <figcaption>Карачаевск<button class="vector"></button></figcaption>
             </figure>
-          </ul> 
+          </li>
         </section>
       </main>
       <footer class="footer">
-        <p>© 2020 Mesto Russia</p>
+        <p class="footer__text">© 2020 Mesto Russia</p>
       </footer>
     </div>
   </body>
