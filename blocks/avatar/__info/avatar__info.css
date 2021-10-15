@@ -1,0 +1,6 @@
+.avatar__info {
+    width: 120px;
+    display: block;
+    margin: 3.75px 0 0 22.5px;
+    border-radius: 50%;
+}

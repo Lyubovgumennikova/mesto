@@ -1,5 +1,6 @@
 .profile__info_text_hobby {
-    grid-area: hobby;
+    
+    grid-column: span 2;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;

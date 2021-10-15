@@ -1,5 +1,7 @@
 .profile__info_text_avtor {
-    grid-area: avtor;
+    
+    grid-column: 1/1;
+    grid-row: 1/1;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
