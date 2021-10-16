@@ -7,13 +7,14 @@
 @import "../blocks/header/__logo/header__logo.css";
 @import "../blocks/header/__line/header__line.css";
 @import "../blocks/profile/profile.css";
+@import "../blocks/avatar/avatar.css";
+@import "../blocks/avatar/__info/avatar__info.css";
 @import "../blocks/profile/__info/profile__info.css";
+@import "../blocks/profile/__info-nik/profile__info-nik.css";
 @import "../blocks/profile/__info/_text/profile__info_text_avtor.css";
 @import "../blocks/profile/__info/_text/profile__info_text_hobby.css";
 @import "../blocks/profile/__button-add/profile__button-add.css";
-@import "../blocks/profile/__info/_rectangle/profile__info_rectangle_edit.css";
-@import "../blocks/avatar/avatar.css";
-@import "../blocks/avatar/__info/avatar__info.css";
+@import "../blocks/profile/__button-edit/profile__button-edit.css";
 @import "../blocks/elements/elements.css";
 @import "../blocks/element/element.css";
 @import "../blocks/element/__rectangle/element__rectangle.css";

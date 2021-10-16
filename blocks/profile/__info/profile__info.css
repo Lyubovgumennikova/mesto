@@ -6,9 +6,19 @@
     display: grid;
     grid-template-columns: minmax(294px, 1fr);
     gap: 16px 18px;
-
+    
 }
 
 .profile__info::placeholder {
     color:#FFFFFF;
+}
+
+@media (max-width: 999px) {
+    .profile__info {
+        display: inline-grid;
+        grid-template-columns: minmax(189px, 1fr);
+        gap: 14px 15.25px;
+        justify-content: center;
+        
+    }
 }
