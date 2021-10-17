@@ -8,7 +8,7 @@
     color:#FFFFFF;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 767px) {
     .profile__info_text_avtor {
         font-size: 27px;
         line-height: 33px;

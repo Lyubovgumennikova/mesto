@@ -4,21 +4,18 @@
     background-color: #000000;
     max-width: 336px;
     display: grid;
-    grid-template-columns: minmax(294px, 1fr);
+    grid-template-columns: 294px 1fr;
     gap: 16px 18px;
-    
+    justify-content: space-evenly;
 }
 
 .profile__info::placeholder {
     color:#FFFFFF;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 767px) {
     .profile__info {
-        display: inline-grid;
-        grid-template-columns: minmax(189px, 1fr);
+        grid-template-columns: 189px 1fr;
         gap: 14px 15.25px;
-        justify-content: center;
-        
     }
 }

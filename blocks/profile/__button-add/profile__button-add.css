@@ -9,7 +9,7 @@
     background: url(../../../images/Vectorp.png) center no-repeat;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 619px) {
     .profile__button-add {
         width: 285px;
         margin: 0;
