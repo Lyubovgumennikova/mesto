@@ -1,0 +1,11 @@
+.form__line {
+    width: 358px;
+    margin-top: 13px;
+    margin-bottom: 30px;
+    border: 1px solid #000000;
+    opacity: 0.2;
+}
+
+.form__line:last-child {
+    margin-bottom: 0;
+}

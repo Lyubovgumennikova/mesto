@@ -1,0 +1,4 @@
+.popup__content {
+    margin: 56px auto 48px;
+    width: calc(100% - (2*36px));
+}
