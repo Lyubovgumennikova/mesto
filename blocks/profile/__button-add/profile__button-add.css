@@ -9,6 +9,10 @@
     background: url(../../../images/Vectorp.png) center no-repeat;
 }
 
+.profile__button-add:hover {
+    opacity: 0.6;
+}
+
 @media (max-width: 619px) {
     .profile__button-add {
         width: 285px;

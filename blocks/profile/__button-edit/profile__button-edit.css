@@ -11,6 +11,10 @@
     margin-top: auto;    
 }
 
+.profile__button-edit:hover {
+    opacity: 0.6;
+}
+
 @media (max-width: 619px) {
     .profile__button-edit {
         width: 18px;

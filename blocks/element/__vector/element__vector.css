@@ -8,7 +8,6 @@
     height: 15px;
     width: 15px;
     position: static;
-    opacity: 0.5;
     transition: 0.3s;
     align-self: center;
 }
@@ -20,5 +19,4 @@
 
 .element__vector:active {
     background: #000000;
-    overflow: hidden;
 }
