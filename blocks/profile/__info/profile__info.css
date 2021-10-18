@@ -1,16 +1,7 @@
 .profile__info {
-    border: none;
-    padding: 0;
-    background-color: #000000;
-    max-width: 336px;
     display: grid;
     grid-template-columns: 294px 1fr;
     gap: 16px 18px;
-    justify-content: space-evenly;
-}
-
-.profile__info::placeholder {
-    color:#FFFFFF;
 }
 
 @media (max-width: 767px) {
