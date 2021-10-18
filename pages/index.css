@@ -31,6 +31,7 @@
 @import "../blocks/popup/__input/popup__input.css";
 @import "../blocks/form/__line/form__line.css";
 @import "../blocks/popup/__submit-button/popup__submit-button.css";
+@import "../blocks/popup/_is-opened/popup_is-opened.css";
 
 
 
