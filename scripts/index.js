@@ -18,8 +18,8 @@ let jobProfile = profilElement.querySelector(".profile__info-job");
 //console.log(nameProfile.textContent);
 //console.log(jobProfile);
 let formElement = popupElement.querySelector(".popup__content");// Воспользуйтесь методом querySelector()
-let nameInput = popupElement.querySelector(".popup__input-name");// Воспользуйтесь инструментом .querySelector()
-let jobInput = popupElement.querySelector(".popup__input-job");// Воспользуйтесь инструментом .querySelector()
+let nameInput = popupElement.querySelector(".popup__input_name");// Воспользуйтесь инструментом .querySelector()
+let jobInput = popupElement.querySelector(".popup__input_job");// Воспользуйтесь инструментом .querySelector()
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler (evt) {
