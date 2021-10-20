@@ -18,8 +18,8 @@
             <img src="./images/avatar.jpg" alt="фото" class="avatar__info" />
           </figure>
           <div class="profile__info">
-            <h1 class="profile__info profile__info_text_avtor">Жак-Ив Кусто</h1>
-            <p class="profile__info profile__info_text_hobby">Исследователь океана</p>
+            <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+            <p class="profile__info-job">Исследователь океана</p>
             <button class="profile__button-edit"></button>
           </div>
           <button class="profile__button-add"></button>
@@ -97,21 +97,25 @@
         <button class="popup__close"></button>
         <div class="popup__container">
           <h2 class="popup__text">Редактировать профиль</h2>
-          <form class="popup__content">
+          <form name="info" class="popup__content">
             <input
               type="text"
-              placeholder="Жак-Ив Кусто"
-              class="popup__input"
+              name="nik"
+              value="Жак-Ив Кусто"
+              class="popup__input-name"
             />
             <div class="form__line"></div>
             <input
               type="text"
-              placeholder="Исследователь океана"
-              class="popup__input"
+              name="job"
+              value="Исследователь океана"
+              class="popup__input-job"
             />
             <div class="form__line"></div>
+            <button type="submit" class="popup__submit-button">
+              Сохранить
+            </button>
           </form>
-          <button class="popup__submit-button">Сохранить</button>
         </div>
       </section>
       <footer class="footer">

@@ -1,11 +1,11 @@
 .popup__content {
-    margin: 56px auto 48px;
+    margin: 54px auto 37px;
     width: calc(100% - (2*36px));
 }
 
 @media (max-width: 619px) {
     .popup__content {
-        margin: 75px auto 45px;
+        margin: 75px auto 25px;
         width: calc(100% - (2*22px));
     }
 }
