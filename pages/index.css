@@ -5,7 +5,6 @@
 @import "../blocks/page/__main/page__main.css";
 @import "../blocks/header/header.css";
 @import "../blocks/header/__logo/header__logo.css";
-@import "../blocks/header/__line/header__line.css";
 @import "../blocks/profile/profile.css";
 @import "../blocks/avatar/avatar.css";
 @import "../blocks/avatar/__info/avatar__info.css";
@@ -27,8 +26,7 @@
 @import "../blocks/popup/__close/popup__close.css";
 @import "../blocks/popup/__text/popup__text.css";
 @import "../blocks/popup/__content/popup__content.css";
-@import "../blocks/form-line/form-line.css";
 @import "../blocks/popup/__submit-button/popup__submit-button.css";
-@import "../blocks/popup/_opened/popup_iopened.css";
+@import "../blocks/popup/_opened/popup_opened.css";
 @import "../blocks/popup/__input-name/popup__input-name.css";
 @import "../blocks/popup/__input-job/popup__input-job.css";
