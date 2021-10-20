@@ -27,15 +27,8 @@
 @import "../blocks/popup/__close/popup__close.css";
 @import "../blocks/popup/__text/popup__text.css";
 @import "../blocks/popup/__content/popup__content.css";
-@import "../blocks/form/__line/form__line.css";
+@import "../blocks/form-line/form-line.css";
 @import "../blocks/popup/__submit-button/popup__submit-button.css";
 @import "../blocks/popup/_opened/popup_iopened.css";
 @import "../blocks/popup/__input-name/popup__input-name.css";
 @import "../blocks/popup/__input-job/popup__input-job.css";
-
-
-
-* {
-    outline: 1px solid red;
-  }
-  

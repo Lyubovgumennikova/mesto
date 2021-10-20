@@ -1,4 +1,4 @@
-.form__line {
+.form-line {
     width: 100%;
     margin-top: 13px;
     margin-bottom: 30px;
@@ -6,6 +6,6 @@
     opacity: 0.2;
 }
 
-.form__line:last-child {
+.form-line:last-child {
     margin-bottom: 0;
 }
