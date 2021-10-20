@@ -10,7 +10,6 @@
     <div class="page__container">
       <header class="header">
         <img class="header__logo" src="./images/logo.svg" alt="" />
-        <div class="header__line"></div>
       </header>
       <main class="page__main">
         <section class="profile">
@@ -20,9 +19,9 @@
           <div class="profile__info">
             <h1 class="profile__info-name">Жак-Ив Кусто</h1>
             <p class="profile__info-job">Исследователь океана</p>
-            <button class="profile__button-edit"></button>
+            <button type="button" class="profile__button-edit"></button>
           </div>
-          <button class="profile__button-add"></button>
+          <button type="button" class="profile__button-add"></button>
         </section>
         <section class="elements">
           <div class="element">
@@ -33,7 +32,7 @@
             />
             <div class="element__rectangle">
               <h3 class="element__text">Карачаевск</h3>
-              <button class="element__vector"></button>
+              <button type="button" class="element__vector"></button>
             </div>
           </div>
           <div class="element">
@@ -44,7 +43,7 @@
             />
             <div class="element__rectangle">
               <h3 class="element__text">Кавказский хребет</h3>
-              <button class="element__vector"></button>
+              <button type="button" class="element__vector"></button>
             </div>
           </div>
           <div class="element">
@@ -55,7 +54,7 @@
             />
             <div class="element__rectangle">
               <h3 class="element__text">Гора Эльбрус</h3>
-              <button class="element__vector"></button>
+              <button type="button" class="element__vector"></button>
             </div>
           </div>
           <div class="element">
@@ -66,7 +65,7 @@
             />
             <div class="element__rectangle">
               <h3 class="element__text">Домбай</h3>
-              <button class="element__vector"></button>
+              <button type="button" type="button" class="element__vector"></button>
             </div>
           </div>
           <div class="element">
@@ -77,7 +76,7 @@
             />
             <div class="element__rectangle">
               <h3 class="element__text">Гора Эргос</h3>
-              <button class="element__vector"></button>
+              <button type="button" class="element__vector"></button>
             </div>
           </div>
           <div class="element">
@@ -88,13 +87,13 @@
             />
             <div class="element__rectangle">
               <h3 class="element__text">Гора Софруджу</h3>
-              <button class="element__vector"></button>
+              <button type="button" class="element__vector"></button>
             </div>
           </div>
         </section>
       </main>
       <section class="popup">
-        <button class="popup__close"></button>
+        <button type="button" class="popup__close"></button>
         <div class="popup__container">
           <h2 class="popup__text">Редактировать профиль</h2>
           <form name="info" class="popup__content">
@@ -102,16 +101,14 @@
               type="text"
               name="nik"
               value="Жак-Ив Кусто"
-              class="popup__input-name"
+              class="popup__input popup__input_name"
             />
-            <div class="form-line"></div>
             <input
               type="text"
               name="job"
               value="Исследователь океана"
-              class="popup__input-job"
+              class="popup__input popup__input_job"
             />
-            <div class="form-line"></div>
             <button type="submit" class="popup__submit-button">
               Сохранить
             </button>
