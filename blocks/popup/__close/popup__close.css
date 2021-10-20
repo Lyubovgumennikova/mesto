@@ -6,6 +6,7 @@
     align-self: start;
     border: none;
     background: url(../../../images/Close\ Icon.png) center no-repeat;
+    margin-top: -64px;
 }
 
 .popup__close:hover {
@@ -17,5 +18,6 @@
         width: 20px;
         height: 20px;
         margin-left: calc(100% - (2*19px));
+        margin-top: -40px;
     }
 }
