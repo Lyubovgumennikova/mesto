@@ -10,11 +10,11 @@
     position: static;
     transition: 0.3s;
     align-self: center;
+    transition: 0.3s;
 }
 
 .element__vector:hover {
     opacity: 0.5;
-    transition: 0.3s;
 }
 
 .element__vector:active {

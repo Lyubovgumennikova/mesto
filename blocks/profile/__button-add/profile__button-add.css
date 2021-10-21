@@ -6,7 +6,7 @@
     box-sizing: border-box;
     border-radius: 2px;
     margin-left: auto;
-    background: url(../../../images/Vectorp.png) center no-repeat;
+    background: url(../../../images/Vector.svg) center no-repeat;
 }
 
 .profile__button-add:hover {

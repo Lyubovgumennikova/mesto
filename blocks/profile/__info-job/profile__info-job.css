@@ -1,6 +1,6 @@
 .profile__info-job {
     margin: 0;
-    grid-column: 2/1;
+    grid-column: span 2;
     font-family: "Inter", Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
