@@ -1,6 +1,5 @@
 .profile__info-name {
     margin: 0;
-    grid-column: 1/1;
     font-family: "Inter", Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -9,7 +8,7 @@
     color:#FFFFFF;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 @media (max-width: 767px) {
@@ -17,6 +16,5 @@
         font-size: 27px;
         line-height: 33px;
         text-align: center;
-        margin-top: 22.5px;
     }
 }

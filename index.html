@@ -15,106 +15,108 @@
         <section class="profile">
           <img src="./images/avatar.jpg" alt="фото" class="profile__avatar" />
           <div class="profile__info">
-            <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-            <p class="profile__info-job">Исследователь океана</p>
-            <button type="button" class="profile__button-edit"></button>
+            <div class="profile__info-nik">
+              <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+              <button aria-label="edit" type="button" class="profile__button-edit"></button>
+            </div>
+          <p class="profile__info-job">Исследователь океана</p>
           </div>
-          <button type="button" class="profile__button-add"></button>
+          <button aria-label="add" type="button" class="profile__button-add"></button>
         </section>
         <section class="elements">
-          <div class="element">
+          <article class="element">
             <img
               class="element__mask-group"
               src="./images/karachayevsk.jpg"
-              alt="фото"
+              alt="Карачаевск"
             />
             <div class="element__rectangle">
               <h3 class="element__text">Карачаевск</h3>
-              <button type="button" class="element__vector"></button>
+              <button aria-label="like" type="button" class="element__vector"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__mask-group"
               src="./images/kavkazskiy-shrebet.jpg"
-              alt="фото"
+              alt="Кавказский хребет"
             />
             <div class="element__rectangle">
               <h3 class="element__text">Кавказский хребет</h3>
-              <button type="button" class="element__vector"></button>
+              <button aria-label="like" type="button" class="element__vector"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__mask-group"
               src="./images/elbrus.jpg"
-              alt="фото"
+              alt="Эльбрус"
             />
             <div class="element__rectangle">
               <h3 class="element__text">Гора Эльбрус</h3>
-              <button type="button" class="element__vector"></button>
+              <button aria-label="like" type="button" class="element__vector"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__mask-group"
               src="./images/dombay.jpg"
-              alt="фото"
+              alt="Домбай"
             />
             <div class="element__rectangle">
               <h3 class="element__text">Домбай</h3>
-              <button type="button" class="element__vector"></button>
+              <button aria-label="like" type="button" class="element__vector"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__mask-group"
               src="./images/erzog.jpg"
-              alt="фото"
+              alt="Эргос"
             />
             <div class="element__rectangle">
               <h3 class="element__text">Гора Эргос</h3>
-              <button type="button" class="element__vector"></button>
+              <button aria-label="like" type="button" class="element__vector"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__mask-group"
               src="./images/sufruju.jpg"
-              alt="фото"
+              alt="Софруджу"
             />
             <div class="element__rectangle">
               <h3 class="element__text">Гора Софруджу</h3>
-              <button type="button" class="element__vector"></button>
+              <button aria-label="like" type="button" class="element__vector"></button>
             </div>
-          </div>
+          </article>
         </section>
       </main>
-      <section class="popup">
-        <button type="button" class="popup__close"></button>
+      <div class="popup">
+        <button aria-label="cloce" type="button" class="popup__close"></button>
         <div class="popup__container">
           <h2 class="popup__text">Редактировать профиль</h2>
           <form name="info" class="popup__content">
             <input
               type="text"
-              name="nik"
-              value="Жак-Ив Кусто"
-              class="popup__input popup__input_name"
+              name="nik" placeholder="Жак-Ив Кусто"
+              value=""
+              class="popup__input popup__input_prof_name"
             />
             <input
               type="text"
-              name="job"
-              value="Исследователь океана"
-              class="popup__input popup__input_job"
+              name="job" placeholder="Исследователь океана"
+              value=""
+              class="popup__input popup__input_prof_job"
             />
             <button type="submit" class="popup__submit-button">
               Сохранить
             </button>
           </form>
         </div>
-      </section>
+      </div>
       <footer class="footer">
-        <p class="footer__text">© 2020 Mesto Russia</p>
+        <p class="footer__text">&#169;2020 Mesto Russia</p>
       </footer>
     </div>
     <script src="./scripts/index.js"></script>

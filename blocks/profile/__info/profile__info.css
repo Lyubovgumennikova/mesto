@@ -1,12 +1,4 @@
 .profile__info {
-    display: grid;
-    grid-template-columns: 294px 1fr;
-    gap: 16px 18px;
-}
-
-@media (max-width: 767px) {
-    .profile__info {
-        grid-template-columns: 189px 1fr;
-        gap: 14px 15.25px;
-    }
+    display: flex;
+    flex-direction: column;
 }
