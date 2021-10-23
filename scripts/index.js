@@ -7,8 +7,11 @@ const openPopup = function (){
 };
 
 const closePopup = function (){
-  popupElement.classList.remove('popup_opened')
+  popupElement.classList.remove('popup_opened');
+  nameInput.value = "Жак-Ив Кусто";
+  jobInput.value = "Исследователь океана";
 };
+
 
 const profilElement = document.querySelector(".profile");
 let nameProfile = profilElement.querySelector(".profile__info-name");
