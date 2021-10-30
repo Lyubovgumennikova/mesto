@@ -92,6 +92,10 @@
           </article>
         </section>
       </main>
+      
+      <footer class="footer">
+        <p class="footer__text">&#169;2020 Mesto Russia</p>
+      </footer>
       <div class="popup">
         <button aria-label="cloce" type="button" class="popup__close"></button>
         <div class="popup__container">
@@ -115,9 +119,52 @@
           </form>
         </div>
       </div>
-      <footer class="footer">
-        <p class="footer__text">&#169;2020 Mesto Russia</p>
-      </footer>
+      <div class="popup">
+        <button aria-label="cloce" type="button" class="popup__close"></button>
+        <div class="popup__container">
+          <h2 class="popup__text">Редактировать профиль</h2>
+          <form name="info" class="popup__content">
+            <input
+              type="text"
+              name="nik" placeholder="Жак-Ив Кусто"
+              value=""
+              class="popup__input popup__input_prof_name"
+            />
+            <input
+              type="text"
+              name="job" placeholder="Исследователь океана"
+              value=""
+              class="popup__input popup__input_prof_job"
+            />
+            <button type="submit" class="popup__submit-button">
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup">
+        <button aria-label="cloce" type="button" class="popup__close"></button>
+        <div class="popup__container">
+          <h2 class="popup__text">Редактировать профиль</h2>
+          <form name="info" class="popup__content">
+            <input
+              type="text"
+              name="nik" placeholder="Жак-Ив Кусто"
+              value=""
+              class="popup__input popup__input_prof_name"
+            />
+            <input
+              type="text"
+              name="job" placeholder="Исследователь океана"
+              value=""
+              class="popup__input popup__input_prof_job"
+            />
+            <button type="submit" class="popup__submit-button">
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
