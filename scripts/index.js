@@ -21,6 +21,12 @@ const openProfPopup = function (){
   jobInput.value = jobProfile.textContent;
 };
 
+const openCardPopup = function (){
+  popupCardElement.classList.add('popup_opened');
+  
+  //nameInput.value = nameProfile.textContent;
+  //jobInput.value = jobProfile.textContent;
+};
 
 const closeProfPopup = function (){
   popupEditElement.classList.remove('popup_opened');
@@ -38,4 +44,5 @@ function formSubmitHandler (evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 
 popupOpenButtonElement.addEventListener("click", openProfPopup);
+popupAddButtonElement.addEventListener("click", openCardPopup);
 popupCloseButtonElement.addEventListener("click", closeProfPopup);
