@@ -1,9 +1,14 @@
+const popupElement = document.querySelectorAll(".popup"); 
 const popupEditElement = document.querySelector(".popup_type_edit"); //popupEditElement
 const popupCardElement = document.querySelector(".popup_type_new-card");
+const cardElement = document.querySelector(".element");
 
-const popupCloseButtonElement = popupEditElement.querySelector(".popup__close");
+const popupCloseButtonElement = document.querySelector(".popup__close");
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
+const deleteButtonElement = document.querySelector(".element__remove-button");
+
+
 
 
 const initialCards = [
@@ -39,7 +44,7 @@ const cardTemplate = document.querySelector('.card-template');
 function render() {
   for (let i = 0; i < initialCards.length; i++) {
     const element = initialCards[i];
-    renderItem(element);
+    renderItem(element) //= element;
   }
 };
 
@@ -47,7 +52,9 @@ function renderItem(element) {
   const cardElement = cardTemplate.content.cloneNode(true);
     cardElement.querySelector('.element__text').textContent = element.name;
     cardElement.querySelector('.element__mask-group').src = element.link;
-
+    cardElement.querySelector('.element__vector').addEventListener('click',function(evt) {
+      evt.target.classList.toggle('element__vector_active');
+    } );
   cards.prepend(cardElement);
 };
 render()
@@ -92,9 +99,22 @@ function formSubmitHandler (evt) {
   closeProfPopup ();
 };
 
+
+
 formElement.addEventListener('submit', formSubmitHandler);
+
+
+
+
+  const deletCard = function() {
+    deleteButtonElement.closest ('.element__mask-group');
+    deletCard.remove();
+  };
+
+
 
 popupOpenButtonElement.addEventListener("click", openProfPopup);
 popupAddButtonElement.addEventListener("click", openCardPopup);
 popupCloseButtonElement.addEventListener("click", closeProfPopup);
-
+popupCloseButtonElement.addEventListener("click", closeCardPopup);
+//deleteButtonElement.addEventListener('click', deletCard);
