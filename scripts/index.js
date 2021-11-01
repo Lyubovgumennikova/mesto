@@ -55,6 +55,11 @@ function renderItem(element) {
     cardElement.querySelector('.element__vector').addEventListener('click',function(evt) {
       evt.target.classList.toggle('element__vector_active');
     } );
+    cardElement.querySelector('.element__remove-button').addEventListener('click',function(evt) {
+      evt.target.closest('.element').remove();
+      
+    } );
+
   cards.prepend(cardElement);
 };
 render()
