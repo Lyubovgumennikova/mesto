@@ -72,7 +72,7 @@ function getCard(element) {
 render()
 
 
-function openPopup (popupElement) {
+function toggleModal (popupElement) {
   popupElement.classList.toggle('popup_opened');
 
   popupElement.querySelector('.popup__close').addEventListener('click',function(evt) {
@@ -96,11 +96,11 @@ popupOpenButtonElement.addEventListener("click", function() {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
  
-   openPopup(popupEditElement);
+  toggleModal(popupEditElement);
 });
 
 popupAddButtonElement.addEventListener("click", function (){
-  openPopup(popupCardElement);
+  toggleModal(popupCardElement);
   
   //nameInput.value = nameProfile.textContent;
   //jobInput.value = jobProfile.textContent;
@@ -115,12 +115,12 @@ popupAddButtonElement.addEventListener("click", function (){
 //};
 
 function formSubmitHandler (evt) {
-    evt.preventDefault();
+    evt.preventDefault(popupEditElement);
 
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
   
-  openPopup();
+  toggleModal(popupEditElement);
 };
 formElement.addEventListener('submit', formSubmitHandler);
 
