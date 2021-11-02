@@ -11,12 +11,18 @@ const deleteButtonElement = document.querySelector(".element__remove-button");
 const profilElement = document.querySelector(".profile");
 let nameProfile = profilElement.querySelector(".profile__info-name");
 let jobProfile = profilElement.querySelector(".profile__info-job");
+
+let nameCard = document.querySelector(".element__text");
+let linkCard = document.querySelector(".element__mask-group");
 //console.log(nameProfile.textContent);
 //console.log(jobProfile);
 let formElement = popupEditElement.querySelector(".popup__content");// Воспользуйтесь методом querySelector()
 let nameInput = popupEditElement.querySelector(".popup__input_prof_name");// Воспользуйтесь инструментом .querySelector()
 let jobInput = popupEditElement.querySelector(".popup__input_prof_job");//
 
+let formCardElement = popupCardElement.querySelector(".popup__content");
+let mestInput = popupCardElement.querySelector(".popup__input_card_name");// Воспользуйтесь инструментом .querySelector()
+let cardInput = popupCardElement.querySelector(".popup__input_card_image");//
 
 const initialCards = [
   {
@@ -124,8 +130,20 @@ function formSubmitHandler (evt) {
 };
 formElement.addEventListener('submit', formSubmitHandler);
 
+function formSubmitCards (evt) {
+  evt.preventDefault();
+  let addInputCard = {
+    name: mestInput.value,
+    link: cardInput.value
+  };
+  getCard(addInputCard);
+  //document.querySelector(".element__text").textContent = mestInput.value;
+  //document.querySelector(".element__mask-group").getAttribute('src') = cardInput.value;
+ 
 
-
+toggleModal(popupCardElement);
+};
+formCardElement.addEventListener('submit', formSubmitCards);
 
   const deletCard = function() {
     deleteButtonElement.closest ('.element__mask-group');
