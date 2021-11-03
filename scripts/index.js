@@ -92,7 +92,7 @@ function toggleModal (popupElement) {
 
   popupElement.querySelector('.popup__close').addEventListener('click',function(evt) {
     evt.target.closest('.popup_opened');
-    popupElement.classList.toggle('popup_opened');
+    popupElement.classList.remove('popup_opened');
   //popupElement.querySelector('.popup__close').addEventListener('click',function(popupElement) {
     //popupElement.target.classList.toggle('popup_opened');
   
@@ -127,7 +127,7 @@ const popupOpenImageElement = function (link, name) {
   //const elementImage = document.querySelector(".element")
   //let cardArguments = elementImage.querySelector(".element__text").textContent;
   //let imegeArguments = elementImage.querySelector(".element__mask-group").getAttribute('src');
-  popupImageElement.querySelector(".popup__text").textContent = name;
+  popupImageElement.querySelector(".popup__text-image").textContent = name;
   popupImageElement.querySelector(".popup__mask-group").src = link;
 
  
