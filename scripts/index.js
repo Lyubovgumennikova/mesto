@@ -102,30 +102,10 @@ function toggleModal (popupElement) {
     //evt.target.closest('.popup_opened');
     //popupElement.classList.remove('popup_opened');
 }//)
-function closePopup (evt) {
-  evt.target.closest('.popup_opened');
-  popupElement.classList.remove('popup_opened');
- // popupElement.forEach()  => {
- // popupElement.classList.remove('popup_opened');
- // };
-} 
-  //popupElement.target.classList.toggle('popup_opened');
-
-
- // popupElement.querySelector('.popup__close').addEventListener('click',function(evt) {
-    //evt.target.closest('.popup_opened');
-    //popupElement.classList.remove('popup_opened');
-
-//});
-//}
-const closePopupButon = document.querySelector('.popup__close')
-
-  
-closePopupButon.addEventListener('click', closePopup) //{
- // = document.querySelector('.popup__close')
-  //evt.target.closest('.popup_opened');
-  //popupElement.classList.remove('popup_opened');
-//})
+// function closePopup (evt) {
+//   evt.target.closest('.popup_opened');
+//   popupElement.classList.remove('popup_opened');
+// } 
 
 
 function formSubmitHandler (evt) {
