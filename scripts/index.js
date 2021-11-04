@@ -17,14 +17,14 @@ const profilElement = document.querySelector(".profile");
 const nameProfile = profilElement.querySelector(".profile__info-name");
 const jobProfile = profilElement.querySelector(".profile__info-job");
 
-let linkCard = document.querySelector(".element__mask-group");
+const linkCard = document.querySelector(".element__mask-group");
 
 const formElement = popupEditElement.querySelector(".popup__content");
 const nameInput = popupEditElement.querySelector(".popup__input_prof_name");
 const jobInput = popupEditElement.querySelector(".popup__input_prof_job");
 
 const formCardElement = popupCardElement.querySelector(".popup__content");
-const mestInput = popupCardElement.querySelector(".popup__input_card_name");// Воспользуйтесь инструментом .querySelector()
+const mestInput = popupCardElement.querySelector(".popup__input_card_name");
 const cardInput = popupCardElement.querySelector(".popup__input_card_image");
 
 const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
@@ -66,8 +66,7 @@ const popupOpenImageElement = function (link, name) {
 
 function render() {
   initialCards.forEach((element) => {
-    //createCard(templateElement);
-    getCard(element) //= element;
+    getCard(element);
   });
 };
 
@@ -97,19 +96,10 @@ render();
 
 function toggleModal (popupElement) {
   popupElement.classList.toggle('popup_opened');
-
-  //popupElement.querySelector('.popup__close').addEventListener('click',function(evt) {
-    //evt.target.closest('.popup_opened');
-    //popupElement.classList.remove('popup_opened');
-}//)
-// function closePopup (evt) {
-//   evt.target.closest('.popup_opened');
-//   popupElement.classList.remove('popup_opened');
-// } 
-
+}
 
 function formSubmitHandler (evt) {
-    evt.preventDefault(popupEditElement);
+  evt.preventDefault(popupEditElement);
 
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
