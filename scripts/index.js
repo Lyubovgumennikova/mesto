@@ -61,34 +61,39 @@ const popupOpenImageElement = function (link, name) {
 
 function render() {
   initialCards.forEach((element) => {
-    //renderCard(element);
+    //createCard(templateElement);
     getCard(element) //= element;
   });
 };
 
-//function getCard(element) {
- // const cardElement = createCard(element);
-  //cards.prepend(cardElement);
-//};
+function getCard(element) {
+  const cardElement = createCard(element);
+  cards.prepend(cardElement);
+};
 
-function getCard(element) { 
-  const cardElement = cardTemplate.content.cloneNode(true); 
-    cardElement.querySelector('.element__text').textContent = element.name; 
-    cardElement.querySelector('.element__mask-group').src = element.link;
-    cardElement.querySelector('.element__mask-group').alt = element.name;
-    cardElement.querySelector('.element__vector').addEventListener('click',function(evt) { 
-      evt.target.classList.toggle('element__vector_active'); 
-    } ); 
-    cardElement.querySelector('.element__remove-button').addEventListener('click',function(evt) { 
-      evt.target.closest('.element').remove(); 
-    } ); 
-    cardElement.querySelector('.element__mask-group').addEventListener("click", function(event) { 
-      popupOpenImageElement(element.link, element.name) 
-    }); 
-    cards.prepend(cardElement); 
+function createCard(element) {
+  const templateElement = cardTemplate.content.cloneNode(true);
+  templateElement.querySelector('.element__text').textContent = element.name;
+  templateElement.querySelector('.element__mask-group').src = element.link;
+  templateElement.querySelector('.element__mask-group').alt = element.name;
+  
+  //const cardElement = createCard(element);
+
+  templateElement.querySelector('.element__vector').addEventListener('click',function(evt) {
+      evt.target.classList.toggle('element__vector_active');
+    } );
+    templateElement.querySelector('.element__remove-button').addEventListener('click',function(evt) {
+      evt.target.closest('.element').remove();
+    } );
+    templateElement.querySelector('.element__mask-group').addEventListener("click", function(event) {
+      popupOpenImageElement(element.link, element.name)
+    });
+    
+    return templateElement;
+
 
 }; 
-//getCard(element)
+
 render();
 
 function toggleModal (popupElement) {
