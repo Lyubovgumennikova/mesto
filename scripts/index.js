@@ -2,6 +2,7 @@ const popupEditElement = document.querySelector(".popup_type_edit");
 const popupCardElement = document.querySelector(".popup_type_new-card");
 const popupImageElement = document.querySelector(".popup_type_image");
 
+
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
 const deleteButtonElement = document.querySelector(".element__remove-button");
@@ -64,6 +65,16 @@ const popupOpenImageElement = function (link, name) {
       toggleModal(popupImageElement);
 }
 
+// const clocePopupClickOverlay = function (event) {
+//   if (event.target !== event.currentTarget) {
+//     return;
+//   }
+//   toggleModal(popupEditElement);
+//   toggleModal(popupCardElement);
+//   toggleModal(popupImageElement);
+
+// }
+
 function render() {
   initialCards.forEach((element) => {
     getCard(element);
@@ -77,9 +88,10 @@ function getCard(element) {
 
 function createCard(element) {
   const templateElement = cardTemplate.content.cloneNode(true);
+  const imageCardElement = templateElement.querySelector('.element__mask-group')
   templateElement.querySelector('.element__text').textContent = element.name;
-  templateElement.querySelector('.element__mask-group').src = element.link;
-  templateElement.querySelector('.element__mask-group').alt = element.name;
+  imageCardElement.src = element.link;
+  imageCardElement.alt = element.name;
   
   templateElement.querySelector('.element__vector').addEventListener('click',function(evt) {
       evt.target.classList.toggle('element__vector_active');
@@ -87,7 +99,7 @@ function createCard(element) {
     templateElement.querySelector('.element__remove-button').addEventListener('click',function(evt) {
       evt.target.closest('.element').remove();
   });
-    templateElement.querySelector('.element__mask-group').addEventListener("click", function(event) {
+  imageCardElement.addEventListener("click", function(event) {
       popupOpenImageElement(element.link, element.name)
   });
     return templateElement;
@@ -144,3 +156,7 @@ formCardElement.addEventListener('submit', formSubmitCards);
   cloceButtonImage.addEventListener("click", function (){
     toggleModal(popupImageElement);
   });
+
+  // popupEditElement.addEventListener("click", clocePopupClickOverlay);
+  // popupCardElement.addEventListener("click", clocePopupClickOverlay);
+  // popupImageElement.addEventListener("click", clocePopupClickOverlay);

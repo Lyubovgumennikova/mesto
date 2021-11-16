@@ -46,14 +46,14 @@
               name="nik"
               placeholder="Жак-Ив Кусто"
               value=""
-              class="popup__input popup__input_prof_name"
+              class="popup__input popup__input_prof_name" minlength="2" maxlength="40" required
             />
             <input
               type="text"
               name="job"
               placeholder="Исследователь океана"
               value=""
-              class="popup__input popup__input_prof_job"
+              class="popup__input popup__input_prof_job" minlength="2" maxlength="200" required
             />
             <button type="submit" class="popup__submit-button">
               Сохранить
@@ -74,10 +74,10 @@
               name="name"
               placeholder="Название"
               value=""
-              class="popup__input popup__input_card_name"
+              class="popup__input popup__input_card_name" minlength="2" maxlength="30" required
             />
-            <input type="text" name="card" placeholder="Ссылка на картинку"
-            class="popup__input popup__input_card_image" />
+            <input type="url" name="card" placeholder="Ссылка на картинку"
+            class="popup__input popup__input_card_image" required/>
             <button type="submit" class="popup__submit-button">Создать</button>
           </form>
         </div>
@@ -115,5 +115,6 @@
       </article>
     </template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
