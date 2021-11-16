@@ -65,15 +65,15 @@ const popupOpenImageElement = function (link, name) {
       toggleModal(popupImageElement);
 }
 
-// const clocePopupClickOverlay = function (event) {
-//   if (event.target !== event.currentTarget) {
-//     return;
-//   }
-//   toggleModal(popupEditElement);
-//   toggleModal(popupCardElement);
-//   toggleModal(popupImageElement);
+const clocePopupClickOverlay = function (event) {
+  if (event.target !== event.currentTarget) {
+    return;
+  }
 
-// }
+  const popup = document.querySelector(".popup_opened"); 
+  toggleModal(popup);
+
+}
 
 function render() {
   initialCards.forEach((element) => {
@@ -157,6 +157,6 @@ formCardElement.addEventListener('submit', formSubmitCards);
     toggleModal(popupImageElement);
   });
 
-  // popupEditElement.addEventListener("click", clocePopupClickOverlay);
-  // popupCardElement.addEventListener("click", clocePopupClickOverlay);
-  // popupImageElement.addEventListener("click", clocePopupClickOverlay);
+  popupEditElement.addEventListener("click", clocePopupClickOverlay);
+  popupCardElement.addEventListener("click", clocePopupClickOverlay);
+  popupImageElement.addEventListener("click", clocePopupClickOverlay);
