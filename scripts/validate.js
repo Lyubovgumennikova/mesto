@@ -32,7 +32,7 @@
       // передав ей элемент формы
      // setEventListeners(formElement);
       
-        
+     console.log(forms)
   };
 
   function addListenersToForm(form) {
@@ -45,7 +45,7 @@
           evt.preventDefault();
         });
 //     // каждому полю добавим обработчик события input
-      
+console.log(inputs)
   }; 
 
 function  addListenersToInput(input) {
@@ -54,8 +54,17 @@ function  addListenersToInput(input) {
 
 function handleFieldValidation(evt) {
   const element = evt.target;
-  const errorConteiner = document.querySelectorAll('#${element.id}-error');
-
+  if (!element.validity.valid) {
+        // showInputError теперь получает параметром форму, в которой
+        // находится проверяемое поле, и само это поле
+       // showInputError(formElement, inputElement, inputElement.validationMessage);
+      // } //else {
+      //   // hideInputError теперь получает параметром форму, в которой
+      //   // находится проверяемое поле, и само это поле
+      //   hideInputError(formElement, inputElement);
+      // }
+    console.log(element.validity)
+      }; 
 }
   
  

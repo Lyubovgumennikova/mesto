@@ -141,7 +141,7 @@ function formSubmitCards (evt) {
   toggleModal(popupCardElement);
   mestInput.value = "";
   cardInput.value= "";
-  setSubmitButtonState(false)
+  //setSubmitButtonState(false)
 };
 
 formElement.addEventListener('submit', formSubmitHandler);
@@ -190,12 +190,12 @@ function clocePopupClickByEsc(evt) {
     };
 };  
 
-function setSubmitButtonState(isFormValid) {
-  if (isFormValid) {
-    submitButtonElement.removeAttribute('disabled');
-    submitButtonElement.classList.remove('popup__submit-button_disabled');
-} else {
-  submitButtonElement.setAttribute('disabled', true);
-  submitButtonElement.classList.add('popup__submit-button_disabled'); 
-}  
-}
+// function setSubmitButtonState(isFormValid) {
+//   if (isFormValid) {
+//     submitButtonElement.removeAttribute('disabled');
+//     submitButtonElement.classList.remove('popup__submit-button_disabled');
+// } else {
+//   submitButtonElement.setAttribute('disabled', true);
+//   submitButtonElement.classList.add('popup__submit-button_disabled'); 
+// }  
+// }
