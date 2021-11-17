@@ -37,5 +37,6 @@
 @import "../blocks/popup/__close/_type/popup__close_type_image.css";
 @import "../blocks/popup/__input/_type/popup__input_type_error.css";
 @import "../blocks/popup/__input-error/popup__input-error.css";
+@import "../blocks/popup/__submit-button/_disabled/popup__submit-button_disabled.css";
 
 

@@ -112,10 +112,23 @@ const isValid = (formElement, inputElement) => {
 // Вызовем функцию isValid на каждый ввод символа
 //formInput.addEventListener('input', isValid); 
 
+function setSubmitButtonState(inputList, buttonElement) {
+  if (hasInvalidInput(inputList)) {
+    //submitButtonElement.setAttribute('disabled', true);
+    buttonElement.classList.add('popup__submit-button_disabled'); 
+} else {
+  
+  buttonElement.removeAttribute('disabled');
+  buttonElement.classList.remove('popup__submit-button_disabled');
+}  
+}
+
 const setEventListeners = (formElement) => {
   // Находим все поля внутри формы,
   // сделаем из них массив методом Array.from
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  const buttonElement = formElement.querySelector('.popup__submit-button');
+    
 
   // Обойдём все элементы полученной коллекции
   inputList.forEach((inputElement) => {
@@ -123,9 +136,11 @@ const setEventListeners = (formElement) => {
     inputElement.addEventListener('input', () => {
       // Внутри колбэка вызовем isValid,
       // передав ей форму и проверяемый элемент
-      isValid(formElement, inputElement)
+      isValid(formElement, inputElement);
+      setSubmitButtonState(inputList, buttonElement)
     });
   });
+  
 }; 
 
 const enableValidation = () => {
@@ -148,3 +163,16 @@ const enableValidation = () => {
 
 // Вызовем функцию
 enableValidation(); 
+
+// Функция принимает массив полей
+
+const hasInvalidInput = (inputList) => {
+  // проходим по этому массиву методом some
+  return inputList.some((inputElement) => {
+    // Если поле не валидно, колбэк вернёт true
+    // Обход массива прекратится и вся фунцкция
+    // hasInvalidInput вернёт true
+
+    return !inputElement.validity.valid;
+  })
+}; 

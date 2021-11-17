@@ -190,12 +190,3 @@ function clocePopupClickByEsc(evt) {
     };
 };  
 
-// function setSubmitButtonState(isFormValid) {
-//   if (isFormValid) {
-//     submitButtonElement.removeAttribute('disabled');
-//     submitButtonElement.classList.remove('popup__submit-button_disabled');
-// } else {
-//   submitButtonElement.setAttribute('disabled', true);
-//   submitButtonElement.classList.add('popup__submit-button_disabled'); 
-// }  
-// }
