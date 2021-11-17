@@ -35,4 +35,6 @@
 @import "../blocks/popup/_type/_image/popup_type_image.css";
 @import "../blocks/popup/__text-image/popup__text-image.css";
 @import "../blocks/popup/__close/_type/popup__close_type_image.css";
+@import "../blocks/popup/__input/_type/popup__input_type_error.css";
+
 
