@@ -142,7 +142,7 @@ function formSubmitCards (evt) {
   toggleModal(popupCardElement);
   mestInput.value = "";
   cardInput.value= "";
-  enableValidation()
+  enableValidation();
 };
 
 formElement.addEventListener('submit', formSubmitHandler);
@@ -152,7 +152,7 @@ formCardElement.addEventListener('submit', formSubmitCards);
   popupOpenButtonElement.addEventListener("click", function() {
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
-  
+    enableValidation()
     toggleModal(popupEditElement);
   });
   
