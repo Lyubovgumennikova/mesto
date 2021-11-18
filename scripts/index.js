@@ -119,7 +119,7 @@ function clocePopupClickByEsc(evt) {
   };
 };
 
-function formSubmitHandler (evt) {
+function submitProfileForm (evt) {
   evt.preventDefault(popupEditElement);
 
   nameProfile.textContent = nameInput.value;
@@ -128,7 +128,7 @@ function formSubmitHandler (evt) {
   toggleModal(popupEditElement);
 };
 
-function formSubmitCards (evt) {
+function submitCardsForm (evt) {
   evt.preventDefault();
   const addInputCard = {
     name: mestInput.value,
@@ -141,8 +141,8 @@ function formSubmitCards (evt) {
   enableValidation();
 };
 
-formElement.addEventListener('submit', formSubmitHandler);
-formCardElement.addEventListener('submit', formSubmitCards);
+formElement.addEventListener('submit', submitProfileForm);
+formCardElement.addEventListener('submit', submitCardsForm);
 
 
   popupOpenButtonElement.addEventListener("click", function() {
@@ -167,9 +167,9 @@ formCardElement.addEventListener('submit', formSubmitCards);
     closePopup(popupImageElement);
   });
 
-  popupEditElement.addEventListener("click", clocePopupClickOverlay);
-  popupCardElement.addEventListener("click", clocePopupClickOverlay);
-  popupImageElement.addEventListener("click", clocePopupClickOverlay);
+  popupEditElement.addEventListener("mousedown", clocePopupClickOverlay);
+  popupCardElement.addEventListener("mousedown", clocePopupClickOverlay);
+  popupImageElement.addEventListener("mousedown", clocePopupClickOverlay);
 
   document.addEventListener('keydown', clocePopupClickByEsc);
   document.removeEventListener('keyup', clocePopupClickByEsc);
