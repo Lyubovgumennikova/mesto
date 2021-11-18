@@ -1,19 +1,14 @@
-const popup = document.querySelector(".popup_opened");
-
 const popupEditElement = document.querySelector(".popup_type_edit"); 
 const popupCardElement = document.querySelector(".popup_type_new-card");
 const popupImageElement = document.querySelector(".popup_type_image");
-
 
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
 const deleteButtonElement = document.querySelector(".element__remove-button");
 
-
 const cloceButtonProfil = popupEditElement.querySelector(".popup__close_type_edit");
 const cloceButtonCard = popupCardElement.querySelector(".popup__close_type_new-card");
 const cloceButtonImage = popupImageElement.querySelector(".popup__close_type_image");
-//const submitButtonElement = formElement.querySelector(".popup__submit-button");
 
 const cards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.card-template');
@@ -71,16 +66,10 @@ const popupOpenImageElement = function (link, name) {
 
 function clocePopupClickOverlay(event) {
   if (event.target !== event.currentTarget)  {
-    //const popup = document.querySelector(".popup_opened"); 
-    //closePopup(popup);
     return;
-  }
-
+  };
   const popup = document.querySelector(".popup_opened"); 
   closePopup(popup);
-  
-  // closePopup(popupCardElement);
-  // closePopup(popupImageElement);
 }
 
 
@@ -123,6 +112,12 @@ function closePopup (popupElement) {
   popupElement.classList.remove('popup_opened');
 };
 
+function clocePopupClickByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popup = document.querySelector(".popup_opened"); 
+    closePopup(popup);
+  };
+};
 
 function formSubmitHandler (evt) {
   evt.preventDefault(popupEditElement);
@@ -178,19 +173,3 @@ formCardElement.addEventListener('submit', formSubmitCards);
 
   document.addEventListener('keydown', clocePopupClickByEsc);
   document.removeEventListener('keyup', clocePopupClickByEsc);
-  
-
-  // popup.addEventListener('keydown', function (evt) {
-  //      if (evt.key === 'Escape') {
-  //       closePopup(popup);
-  //     };
-  // }); 
-
-
-function clocePopupClickByEsc(evt) {
-      if (evt.key === 'Escape') {
-        const popup = document.querySelector(".popup_opened"); 
-        closePopup(popup);
-      };
-};  
-
