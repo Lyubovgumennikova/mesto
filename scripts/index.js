@@ -78,6 +78,7 @@ function clocePopupClickOverlay(event) {
 
   const popup = document.querySelector(".popup_opened"); 
   closePopup(popup);
+  
   // closePopup(popupCardElement);
   // closePopup(popupImageElement);
 }
@@ -176,6 +177,8 @@ formCardElement.addEventListener('submit', formSubmitCards);
   popupImageElement.addEventListener("click", clocePopupClickOverlay);
 
   document.addEventListener('keydown', clocePopupClickByEsc);
+  document.removeEventListener('keyup', clocePopupClickByEsc);
+  
 
   // popup.addEventListener('keydown', function (evt) {
   //      if (evt.key === 'Escape') {
@@ -188,6 +191,6 @@ function clocePopupClickByEsc(evt) {
       if (evt.key === 'Escape') {
         const popup = document.querySelector(".popup_opened"); 
         closePopup(popup);
-    };
+      };
 };  
 
