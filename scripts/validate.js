@@ -2,14 +2,14 @@
 //включение валидации вызовом enableValidation
 // все настройки передаются при вызове
 
-// const obj = {
-//     formSelector: '.popup__content',
-//     inputSelector: '.popup__input',
-//     submitButtonSelector: '.popup__submit-button',
-//     inactiveButtonClass: 'popup__submit-button_disabled',
-//     inputErrorClass: 'popup__input_type_error',
-//     errorClass: 'popup__error_visible'
-//   };
+const obj = {
+    formSelector: '.popup__content',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  };
 
 
 
@@ -111,10 +111,9 @@ const isValid = (formElement, inputElement) => {
 
 // Вызовем функцию isValid на каждый ввод символа
 //formInput.addEventListener('input', isValid); 
-
 function setSubmitButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
-    //submitButtonElement.setAttribute('disabled', true);
+    buttonElement.setAttribute('disabled', true);
     buttonElement.classList.add('popup__submit-button_disabled'); 
 } else {
   
@@ -123,24 +122,38 @@ function setSubmitButtonState(inputList, buttonElement) {
 }  
 }
 
+
+
 const setEventListeners = (formElement) => {
   // Находим все поля внутри формы,
   // сделаем из них массив методом Array.from
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
   const buttonElement = formElement.querySelector('.popup__submit-button');
-    
+  
+    setSubmitButtonState(inputList, buttonElement);
 
   // Обойдём все элементы полученной коллекции
   inputList.forEach((inputElement) => {
     // каждому полю добавим обработчик события input
-    inputElement.addEventListener('input', () => {
+    inputElement.addEventListener('input', function () {
       // Внутри колбэка вызовем isValid,
       // передав ей форму и проверяемый элемент
       isValid(formElement, inputElement);
-      setSubmitButtonState(inputList, buttonElement)
+      setSubmitButtonState(inputList, buttonElement);
     });
   });
   
+}; 
+
+const hasInvalidInput = (inputList) => {
+  // проходим по этому массиву методом some
+  return inputList.some((inputElement) => {
+    // Если поле не валидно, колбэк вернёт true
+    // Обход массива прекратится и вся фунцкция
+    // hasInvalidInput вернёт true
+
+    return !inputElement.validity.valid;
+  })
 }; 
 
 const enableValidation = () => {
@@ -150,7 +163,7 @@ const enableValidation = () => {
 
   // Переберём полученную коллекцию
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
+    formElement.addEventListener('submit', function (evt) {
       // У каждой формы отменим стандартное поведение
       evt.preventDefault();
     });
@@ -166,13 +179,3 @@ enableValidation();
 
 // Функция принимает массив полей
 
-const hasInvalidInput = (inputList) => {
-  // проходим по этому массиву методом some
-  return inputList.some((inputElement) => {
-    // Если поле не валидно, колбэк вернёт true
-    // Обход массива прекратится и вся фунцкция
-    // hasInvalidInput вернёт true
-
-    return !inputElement.validity.valid;
-  })
-}; 

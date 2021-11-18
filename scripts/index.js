@@ -1,4 +1,4 @@
-//const popup = document.querySelectorAll(".popup_opened");
+const popup = document.querySelector(".popup_opened");
 
 const popupEditElement = document.querySelector(".popup_type_edit"); 
 const popupCardElement = document.querySelector(".popup_type_new-card");
@@ -13,7 +13,7 @@ const deleteButtonElement = document.querySelector(".element__remove-button");
 const cloceButtonProfil = popupEditElement.querySelector(".popup__close_type_edit");
 const cloceButtonCard = popupCardElement.querySelector(".popup__close_type_new-card");
 const cloceButtonImage = popupImageElement.querySelector(".popup__close_type_image");
-const submitButtonElement = document.querySelector(".popup__submit-button");
+//const submitButtonElement = formElement.querySelector(".popup__submit-button");
 
 const cards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.card-template');
@@ -82,6 +82,7 @@ function clocePopupClickOverlay(event) {
   // closePopup(popupImageElement);
 }
 
+
 function render() {
   initialCards.forEach((element) => {
     getCard(element);
@@ -119,7 +120,7 @@ function toggleModal (popupElement) {
 
 function closePopup (popupElement) {
   popupElement.classList.remove('popup_opened');
-}
+};
 
 
 function formSubmitHandler (evt) {
@@ -141,7 +142,7 @@ function formSubmitCards (evt) {
   toggleModal(popupCardElement);
   mestInput.value = "";
   cardInput.value= "";
-  //setSubmitButtonState(false)
+  enableValidation()
 };
 
 formElement.addEventListener('submit', formSubmitHandler);
