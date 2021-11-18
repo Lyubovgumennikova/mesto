@@ -106,10 +106,12 @@ render();
 
 function openPopup (popupElement) {
   popupElement.classList.add('popup_opened');
+  document.addEventListener('keyup', clocePopupClickByEsc); 
 }
 
 function closePopup (popupElement) {
   popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keyup', clocePopupClickByEsc); 
 };
 
 function clocePopupClickByEsc(evt) {
@@ -171,5 +173,5 @@ formCardElement.addEventListener('submit', submitCardsForm);
   popupCardElement.addEventListener("mousedown", clocePopupClickOverlay);
   popupImageElement.addEventListener("mousedown", clocePopupClickOverlay);
 
-  document.addEventListener('keydown', clocePopupClickByEsc);
-  document.removeEventListener('keyup', clocePopupClickByEsc);
+  //document.addEventListener('keydown', clocePopupClickByEsc);
+ // document.removeEventListener('keyup', clocePopupClickByEsc);
