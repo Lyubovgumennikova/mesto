@@ -73,11 +73,9 @@ function clocePopupClickOverlay(event) {
 }
 
 
-function render() {
   initialCards.forEach((element) => {
     renderCard(element);
   });
-};
 
 function renderCard(element) {
   const cardElement = createCard(element);
@@ -102,7 +100,7 @@ function createCard(element) {
   });
     return templateElement;
 }; 
-render();
+//render();
 
 function openPopup (popupElement) {
   popupElement.classList.add('popup_opened');
@@ -140,7 +138,9 @@ function submitCardsForm (evt) {
   closePopup(popupCardElement);
   mestInput.value = "";
   cardInput.value= "";
-  enableValidation();
+  //submitButtonSelector.disabled = true;
+  //buttonElement.classList.add(config.inactiveButtonClass)
+  enableValidation(); //setSubmitButtonState(inputElement, config) // 
 };
 
 formProfileElement.addEventListener('submit', submitProfileForm);
@@ -173,5 +173,4 @@ formCardElement.addEventListener('submit', submitCardsForm);
   popupCardElement.addEventListener("mousedown", clocePopupClickOverlay);
   popupImageElement.addEventListener("mousedown", clocePopupClickOverlay);
 
-  //document.addEventListener('keydown', clocePopupClickByEsc);
- // document.removeEventListener('keyup', clocePopupClickByEsc);
+  
