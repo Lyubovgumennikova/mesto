@@ -140,7 +140,7 @@ function submitCardsForm (evt) {
   cardInput.value= "";
   //submitButtonSelector.disabled = true;
   //buttonElement.classList.add(config.inactiveButtonClass)
-  enableValidation(); //setSubmitButtonState(inputElement, config) // 
+  //enableValidation(); //setSubmitButtonState(inputElement, config) // 
 };
 
 formProfileElement.addEventListener('submit', submitProfileForm);
@@ -150,7 +150,7 @@ formCardElement.addEventListener('submit', submitCardsForm);
   popupOpenButtonElement.addEventListener("click", function() {
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
-    enableValidation()
+    //enableValidation()
     openPopup(popupEditElement);
   });
   

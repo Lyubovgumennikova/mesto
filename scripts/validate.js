@@ -7,7 +7,7 @@ const config = {
   errorClass: "popup__input-error_active",
 };
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
@@ -17,7 +17,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 
 // Функция, которая удаляет класс с ошибкой
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
   inputElement.classList.remove(config.inputErrorClass);
@@ -31,15 +31,15 @@ const hideInputError = (formElement, inputElement) => {
 
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, config);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, config);
   }
 };
 
 //кнопка
 
-function setSubmitButtonState(inputList, buttonElement) {
+function setSubmitButtonState(inputList, buttonElement, config) {
   if (hasInvalidInput(inputList)) {
     buttonElement.setAttribute("disabled", true);
 
@@ -56,13 +56,13 @@ const setEventListeners = (formElement) => {
 
   const buttonElement = formElement.querySelector(config.submitButtonSelector); //".popup__submit-button"
 
-  setSubmitButtonState(inputList, buttonElement);
+  setSubmitButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      isValid(formElement, inputElement);
+      isValid(formElement, inputElement,config);
 
-      setSubmitButtonState(inputList, buttonElement);
+      setSubmitButtonState(inputList, buttonElement, config);
     });
   });
 };
@@ -73,15 +73,15 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const enableValidation = () => {
+const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector)); //  ".popup__content"
 
-  formList.forEach((formElement) => {
+  formList.forEach((formElement, config) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
 
-    setEventListeners(formElement);
+    setEventListeners(formElement,config);
   });
 };
 
