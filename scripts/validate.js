@@ -7,11 +7,9 @@ const config = {
   errorClass: "popup__input-error_active",
 };
 
-enableValidation(config);
-
 function enableValidation(config) {
 	const forms = Array.from(document.querySelectorAll(config.formSelector)); //   '.popup__content'
-		forms.forEach(addListenersToForm);
+	forms.forEach(addListenersToForm);
 }
 
 function addListenersToForm(form) {
@@ -33,11 +31,8 @@ function addListenersToInput(input) {
 
 function handleFieldValidation(evt) {
 	const element = evt.target;
-	const errorContainer = document.querySelector(`#${element.id}-error`);
-	//element.setCustomValidity('');
-
-	//element.classList.toggle(
-		//config.errorClass, //popup__input-error_active"
+  const errorContainer = document.querySelector(`#${element.id}-error`);
+	
 		if (!element.validity.valid) {
       element.classList.add (config.inputErrorClass)  //'popup__input_type_error'
       element.classList.add(config.errorClass);
@@ -48,19 +43,15 @@ function handleFieldValidation(evt) {
     errorContainer.textContent = element.validationMessage;
 }
 
-
 function handleFormInput(evt) {
     toggleButton(evt.currentTarget);
 }
 
 function toggleButton(form) {
     const button = form.querySelector(config.submitButtonSelector);  //    '.popup__submit-button'
-        const isFormInvalid = !form.checkValidity();
-
+    const isFormInvalid = !form.checkValidity();
     button.disabled = isFormInvalid;
     button.classList.toggle(config.inactiveButtonClass, isFormInvalid); //    'popup__submit-button_disabled'
 }
 
-
-
-
+enableValidation(config);

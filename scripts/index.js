@@ -2,12 +2,6 @@ const popupEditElement = document.querySelector(".popup_type_edit");
 const popupCardElement = document.querySelector(".popup_type_new-card");
 const popupImageElement = document.querySelector(".popup_type_image");
 
-//const popupButtonElement =  Array.from(document.querySelectorAll(".popup__submit-button"));
-const popupButtonElement =  document.querySelector(".popup__submit-button");
-const popupInputElement = Array.from(document.querySelectorAll(".popup__input"));
-const popupValideElement =  document.querySelector(".popup__content");
-
-
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
 const deleteButtonElement = document.querySelector(".element__remove-button");
@@ -50,8 +44,6 @@ function clocePopupClickOverlay(event) {
   const popup = document.querySelector(".popup_opened"); 
   closePopup(popup);
 }
-
-
   initialCards.forEach((element) => {
     renderCard(element);
   });
@@ -83,7 +75,6 @@ function createCard(element) {
 function openPopup (popupElement) {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keyup', clocePopupClickByEsc); 
-  toggleButton(formProfileElement, config)
 }
 
 function closePopup (popupElement) {
@@ -103,10 +94,7 @@ function submitProfileForm (evt) {
 
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  
-  closePopup(popupEditElement);
-  //toggleButton(formProfileElement)
-  //setSubmitButtonState(popupInputElement, popupButtonElement, config)
+    closePopup(popupEditElement);
 };
 
 function submitCardsForm (evt) {
@@ -119,27 +107,22 @@ function submitCardsForm (evt) {
   closePopup(popupCardElement);
   mestInput.value = "";
   cardInput.value= "";
-  toggleButton(formCardElement, config)
-  //setSubmitButtonState(popupInputElement, popupButtonElement, config)
+  toggleButton(formCardElement)
 };
 
 formProfileElement.addEventListener('submit', submitProfileForm);
 formCardElement.addEventListener('submit', submitCardsForm);
 
-
   popupOpenButtonElement.addEventListener("click", function() {
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
-    //enableValidation()
-    //setSubmitButtonState(popupInputElement, popupButtonElement, config)
-    openPopup(popupEditElement);
-
+      openPopup(popupEditElement);
+      toggleButton(formProfileElement);
   });
   
   popupAddButtonElement.addEventListener("click", function (){
     openPopup(popupCardElement);
   });
-
 
   cloceButtonProfil.addEventListener("click", function (){
     closePopup(popupEditElement);
@@ -156,5 +139,3 @@ formCardElement.addEventListener('submit', submitCardsForm);
   popupEditElement.addEventListener("mousedown", clocePopupClickOverlay);
   popupCardElement.addEventListener("mousedown", clocePopupClickOverlay);
   popupImageElement.addEventListener("mousedown", clocePopupClickOverlay);
-
-  
