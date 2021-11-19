@@ -111,7 +111,11 @@ function submitCardsForm (evt) {
   closePopup(popupCardElement);
   mestInput.value = "";
   cardInput.value= "";
-  //submitButtonSelector.disabled = true;
+  //popupCardElement.addEventListener("mousedown", setSubmitButtonState);
+  //setSubmitButtonState(popupFormElement, popupSubmitButton)
+  //setSubmitButtonState(popupInputList, popupSubmitButton, config)
+    //setSubmitButtonState(SubmitEvent, popupSubmitButton, config)
+  //setSubmitButtonState(inputList, buttonElement, config)
   //buttonElement.classList.add(config.inactiveButtonClass)
   //enableValidation(); //setSubmitButtonState(inputElement, config) // 
 };
