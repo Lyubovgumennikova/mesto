@@ -83,7 +83,7 @@ function createCard(element) {
 function openPopup (popupElement) {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keyup', clocePopupClickByEsc); 
-  toggleButton(formProfileElement)
+  toggleButton(formProfileElement, config)
 }
 
 function closePopup (popupElement) {
@@ -119,7 +119,7 @@ function submitCardsForm (evt) {
   closePopup(popupCardElement);
   mestInput.value = "";
   cardInput.value= "";
-  toggleButton(formCardElement)
+  toggleButton(formCardElement, config)
   //setSubmitButtonState(popupInputElement, popupButtonElement, config)
 };
 

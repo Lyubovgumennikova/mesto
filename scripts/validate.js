@@ -40,14 +40,12 @@ function handleFieldValidation(evt) {
 		//config.errorClass, //popup__input-error_active"
 		if (!element.validity.valid) {
       element.classList.add (config.inputErrorClass)  //'popup__input_type_error'
+      element.classList.add(config.errorClass);
     } else {
       element.classList.remove(config.inputErrorClass)  //     'popup__input_type_error'
+      element.classList.remove(config.errorClass);
     }
     errorContainer.textContent = element.validationMessage;
-    
-	//);
-
-		
 }
 
 
