@@ -31,7 +31,7 @@ const isValid = (formElement, inputElement) => {
 //кнопка
 function setSubmitButtonState(inputList, buttonElement, config) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute("disabled", true);
+    buttonElement.setAttribute("disabled",true);
     buttonElement.classList.add(config.inactiveButtonClass); //"popup__submit-button_disabled"
   } else {
     buttonElement.removeAttribute("disabled");
