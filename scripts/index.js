@@ -107,7 +107,7 @@ function submitCardsForm (evt) {
   closePopup(popupCardElement);
   mestInput.value = "";
   cardInput.value= "";
-  toggleButton(formCardElement)
+  toggleButton(formCardElement, config)
 };
 
 formProfileElement.addEventListener('submit', submitProfileForm);
@@ -117,7 +117,7 @@ formCardElement.addEventListener('submit', submitCardsForm);
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
       openPopup(popupEditElement);
-      toggleButton(formProfileElement);
+      toggleButton(formProfileElement,config);
   });
   
   popupAddButtonElement.addEventListener("click", function (){

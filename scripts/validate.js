@@ -8,50 +8,55 @@ const config = {
 };
 
 function enableValidation(config) {
-	const forms = Array.from(document.querySelectorAll(config.formSelector)); //   '.popup__content'
-	forms.forEach(addListenersToForm);
+  const forms = Array.from(document.querySelectorAll(config.formSelector)); //   '.popup__content'
+  forms.forEach((form) => addListenersToForm(form, config))
 }
 
-function addListenersToForm(form) {
-	const inputs = Array.from(document.querySelectorAll(config.inputSelector)); //   '.popup__input'
+function addListenersToForm(form, {inputSelector}) {
+  const inputs = Array.from(document.querySelectorAll(inputSelector)); //   '.popup__input'
 
-	inputs.forEach(addListenersToInput);
+  inputs.forEach((form) => addListenersToInput(form, config))
 
-	form.addEventListener('submit', (evt) => {
+  form.addEventListener('submit', (evt) => {
     evt.preventDefault();
   });
 
-    form.addEventListener('input', handleFormInput);
-    toggleButton(form);
+  form.addEventListener('input',function (evt) {
+    handleFormInput(evt, config);
+    }); 
+      toggleButton(form, config);
 }
 
 function addListenersToInput(input) {
-	input.addEventListener('input', handleFieldValidation);
+  input.addEventListener('input',function (evt) {
+    handleFieldValidation(evt, config);
+  });
 }
 
-function handleFieldValidation(evt) {
-	const element = evt.target;
+function handleFieldValidation(evt, {inputErrorClass, errorClass}) {
+  const element = evt.target;
   const errorContainer = document.querySelector(`#${element.id}-error`);
-	
-		if (!element.validity.valid) {
-      element.classList.add (config.inputErrorClass)  //'popup__input_type_error'
-      element.classList.add(config.errorClass);
+  
+    if (!element.validity.valid) {
+      element.classList.add (inputErrorClass)  //'popup__input_type_error'
+      element.classList.add(errorClass);
     } else {
-      element.classList.remove(config.inputErrorClass)  //     'popup__input_type_error'
-      element.classList.remove(config.errorClass);
+      element.classList.remove(inputErrorClass)  //     'popup__input_type_error'
+      element.classList.remove(errorClass);
     }
     errorContainer.textContent = element.validationMessage;
 }
 
 function handleFormInput(evt) {
-    toggleButton(evt.currentTarget);
+  const form = evt.currentTarget
+  toggleButton(form, config);
 }
 
-function toggleButton(form) {
-    const button = form.querySelector(config.submitButtonSelector);  //    '.popup__submit-button'
+function toggleButton(form, {submitButtonSelector,inactiveButtonClass}) {
+    const button = form.querySelector(submitButtonSelector);  //    '.popup__submit-button'
     const isFormInvalid = !form.checkValidity();
     button.disabled = isFormInvalid;
-    button.classList.toggle(config.inactiveButtonClass, isFormInvalid); //    'popup__submit-button_disabled'
+    button.classList.toggle(inactiveButtonClass, isFormInvalid); //    'popup__submit-button_disabled'
 }
 
 enableValidation(config);
