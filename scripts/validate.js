@@ -12,8 +12,8 @@ function enableValidation(config) {
   forms.forEach((form) => addListenersToForm(form, config))
 }
 
-function addListenersToForm(form, {inputSelector}) {
-  const inputs = Array.from(document.querySelectorAll(inputSelector)); //   '.popup__input'
+function addListenersToForm(form, config) {
+  const inputs = Array.from(document.querySelectorAll(config.inputSelector)); //   '.popup__input'
 
   inputs.forEach((form) => addListenersToInput(form, config))
 
@@ -27,7 +27,7 @@ function addListenersToForm(form, {inputSelector}) {
       toggleButton(form, config);
 }
 
-function addListenersToInput(input) {
+function addListenersToInput(input, config) {
   input.addEventListener('input',function (evt) {
     handleFieldValidation(evt, config);
   });
@@ -47,7 +47,7 @@ function handleFieldValidation(evt, {inputErrorClass, errorClass}) {
     errorContainer.textContent = element.validationMessage;
 }
 
-function handleFormInput(evt) {
+function handleFormInput(evt, config) {
   const form = evt.currentTarget
   toggleButton(form, config);
 }
