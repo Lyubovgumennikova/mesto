@@ -30,25 +30,19 @@ const cardInput = popupCardElement.querySelector(".popup__input_card_image");
 const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
 const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
 
-// const _popupOpenImageElement = function (link, name) {
-//   imageTextPopup.textContent = name;
-//   imageCardPopup.src = link;
-//   imageCardPopup.alt = name;
-//   openPopup(popupImageElement);
-// };
-
 class Card {
-  constructor(link, name, cardSelector) {
-    this._link = link;
-    this._name = name;
-    //this._cardSelector = cardSelector;
+  constructor(data, cardSelector) {
+    this._link = data.link;
+    this._name = data.name;
+    this._cardSelector = cardSelector;
   }
 
   _getTemplate() {
     // забираем разметку из HTML и клонируем элемент
     const cardElement = document
-      .querySelector(".card-template")
-      .content.querySelector(".element")
+      .querySelector(this._cardSelector)
+      .content
+      .querySelector(".element")
       .cloneNode(true);
     // вернём DOM-элемент карточки
     return cardElement;
@@ -102,25 +96,11 @@ class Card {
           imageTextPopup.textContent = this._name;
           popupImageElement.classList.add('popup_opened');
         }
-      //  createCard(element) {
-  //   //const templateElement = cardTemplate.content.cloneNode(true);
-
-  //   templateElement.querySelector('.element__vector').addEventListener('click',function(evt) {
-  //       evt.target.classList.toggle('element__vector_active');
-  //   });
-  //     templateElement.querySelector('.element__remove-button').addEventListener('click',function(evt) {
-  //       evt.target.closest('.element').remove();
-  //   });
-  //   imageCardElement.addEventListener("click", function(event) {
-  //       popupOpenImageElement(element.link, element.name)
-  //   });
-  // };
- 
 }
 
 initialCards.forEach((element) => {
   // Создадим экземпляр карточки
-  const card = new Card(element.link, element.name);
+  const card = new Card(element, '.card-template');
   // Создаём карточку и возвращаем наружу
   const cardElement = card.generateCard();
 
