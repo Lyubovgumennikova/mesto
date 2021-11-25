@@ -37,6 +37,66 @@ const popupOpenImageElement = function (link, name) {
     openPopup(popupImageElement);
 }
 
+class Card {
+  constructor(link, name, cardSelector) {
+    this._link = link;
+    this._name = name;
+    this._cardSelector = cardSelector;
+}
+
+_getTemplate() {
+  // забираем разметку из HTML и клонируем элемент
+    const cardElement = document
+    .querySelector('.card-template')
+    .content
+    .querySelector('.element')
+    .cloneNode(true);
+    
+  // вернём DOM-элемент карточки
+    return cardElement;
+} 
+
+generateCard() {
+  // Запишем разметку в приватное поле _element. 
+  // Так у других элементов появится доступ к ней.
+  this._element = this._getTemplate();
+
+  // Добавим данные
+  this._element.querySelector('.element__mask-group').src = this._link;
+  this._element.querySelector('.element__mask-group').alt = this._link;
+  this._element.querySelector('.element__text').textContent = this._name;
+
+  // Вернём элемент наружу
+  return this._element;
+} 
+
+//  createCard(element) {
+//   //const templateElement = cardTemplate.content.cloneNode(true);
+ 
+  
+//   templateElement.querySelector('.element__vector').addEventListener('click',function(evt) {
+//       evt.target.classList.toggle('element__vector_active');
+//   });
+//     templateElement.querySelector('.element__remove-button').addEventListener('click',function(evt) {
+//       evt.target.closest('.element').remove();
+//   });
+//   imageCardElement.addEventListener("click", function(event) {
+//       popupOpenImageElement(element.link, element.name)
+//   });
+// }; 
+}
+
+
+initialCards.forEach((element) => {
+  // Создадим экземпляр карточки
+  const card = new Card(element.link, element.name);
+  // Создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
+
+  // Добавляем в DOM
+  cards.append(cardElement);
+}); 
+
 function clocePopupClickOverlay(event) {
   if (event.target !== event.currentTarget)  {
     return;
@@ -44,33 +104,33 @@ function clocePopupClickOverlay(event) {
   const popup = document.querySelector(".popup_opened"); 
   closePopup(popup);
 }
-  initialCards.forEach((element) => {
-    renderCard(element);
-  });
+  // initialCards.forEach((element) => {
+  //   renderCard(element);
+  // });
 
-function renderCard(element) {
-  const cardElement = createCard(element);
-  cards.prepend(cardElement);
-};
+// function renderCard(element) {
+//   const cardElement = createCard(element);
+//   cards.prepend(cardElement);
+// };
 
-function createCard(element) {
-  const templateElement = cardTemplate.content.cloneNode(true);
-  const imageCardElement = templateElement.querySelector('.element__mask-group')
-  templateElement.querySelector('.element__text').textContent = element.name;
-  imageCardElement.src = element.link;
-  imageCardElement.alt = element.name;
+// function createCard(element) {
+//   const templateElement = cardTemplate.content.cloneNode(true);
+//   const imageCardElement = templateElement.querySelector('.element__mask-group')
+//   templateElement.querySelector('.element__text').textContent = element.name;
+//   imageCardElement.src = element.link;
+//   imageCardElement.alt = element.name;
   
-  templateElement.querySelector('.element__vector').addEventListener('click',function(evt) {
-      evt.target.classList.toggle('element__vector_active');
-  });
-    templateElement.querySelector('.element__remove-button').addEventListener('click',function(evt) {
-      evt.target.closest('.element').remove();
-  });
-  imageCardElement.addEventListener("click", function(event) {
-      popupOpenImageElement(element.link, element.name)
-  });
-    return templateElement;
-}; 
+//   templateElement.querySelector('.element__vector').addEventListener('click',function(evt) {
+//       evt.target.classList.toggle('element__vector_active');
+//   });
+//     templateElement.querySelector('.element__remove-button').addEventListener('click',function(evt) {
+//       evt.target.closest('.element').remove();
+//   });
+//   imageCardElement.addEventListener("click", function(event) {
+//       popupOpenImageElement(element.link, element.name)
+//   });
+//     return templateElement;
+// }; 
 
 function openPopup (popupElement) {
   popupElement.classList.add('popup_opened');
