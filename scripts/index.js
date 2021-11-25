@@ -75,9 +75,11 @@ class Card {
     // popupCloseButton.addEventListener("click", () => {
     //   this._handleClosePopup();
     // });
-    // defaultCardButton.addEventListener("click", () => {
-    //   renderElements(true);
-    // });
+
+    this._element.querySelector('.element__remove-button').addEventListener("click", () => {
+      this._element.closest('.element').remove();
+    });
+
     // horizontalCardButton.addEventListener("click", () => {
     //   renderElements(false);
     // });
@@ -86,12 +88,12 @@ class Card {
     //         evt.target.classList.toggle('element__vector_active');
     //     });
 
-    //     _like() {
-    //       imageCardPopup.src = this._link;
-    //       imageCardPopup.alt = this._link;
-    //       imageTextPopup.textContent = this._name;
-    //       popupImageElement.classList.add('element__vector_active');
-    //     }
+        // _like() {
+        //   imageCardPopup.src = this._link;
+        //   imageCardPopup.alt = this._link;
+        //   imageTextPopup.textContent = this._name;
+        //   popupImageElement.classList.add('element__vector_active');
+        // }
         
         _handleOpenPopup() {
           imageCardPopup.src = this._link;
