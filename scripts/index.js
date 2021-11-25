@@ -69,12 +69,16 @@ class Card {
   }
   // добавляtv все обработчики в одном месте (слушатели)
   _setEventListeners() {
-    this._element.addEventListener("click", () => {
+    this._element.querySelector(".element__mask-group").addEventListener("click", () => {
       this._handleOpenPopup();
     });
     // popupCloseButton.addEventListener("click", () => {
     //   this._handleClosePopup();
     // });
+
+    this._element.querySelector('.element__vector').addEventListener("click", () => {
+      this._like()
+    });
 
     this._element.querySelector('.element__remove-button').addEventListener("click", () => {
       this._element.closest('.element').remove();
@@ -88,12 +92,9 @@ class Card {
     //         evt.target.classList.toggle('element__vector_active');
     //     });
 
-        // _like() {
-        //   imageCardPopup.src = this._link;
-        //   imageCardPopup.alt = this._link;
-        //   imageTextPopup.textContent = this._name;
-        //   popupImageElement.classList.add('element__vector_active');
-        // }
+        _like() {
+          this._element.querySelector('.element__vector').classList.toggle('element__vector_active');
+        }
         
         _handleOpenPopup() {
           imageCardPopup.src = this._link;
