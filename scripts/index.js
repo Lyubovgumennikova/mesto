@@ -30,6 +30,31 @@ const cardInput = popupCardElement.querySelector(".popup__input_card_image");
 const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
 const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
 
+
+class InitialCard extends Card {
+  //static _template = document.querySelector('#todolist-item-template').content;
+
+  constructor(data, cardSelector) {
+    super(cardSelector);
+    this._link = data.link;
+    this._name = data.name;
+  }
+  generateCard() {
+    // Запишем разметку в приватное поле _element.
+    // Так у других элементов появится доступ к ней.
+    this._element = super._getTemplate();
+    
+    //this._setEventListeners();
+    // Добавим данные
+    this._element.querySelector(".element__mask-group").src = this._link;
+    this._element.querySelector(".element__mask-group").alt = this._link;
+    this._element.querySelector(".element__text").textContent = this._name;
+
+    // Вернём элемент наружу
+    return this._element;
+  }
+}
+
 class addItemCard extends Card {
   constructor(addItem, cardSelector){
  //super(data); 
@@ -67,12 +92,12 @@ const renderElements = (isGrid) => {
     // Создадим экземпляр карточки
     const card = isGrid
     ? new addItemCard(element, '.card-template')
-    : new Card(element, '.card-template');
+    : new InitialCard (element, '.card-template');
 
     // ? new addItemCard(item, '.card-template')
     // : new Card(element, '.card-template');
         // Создаём карточку и возвращаем наружу
-    const cardElement = card.generateCard();
+    const cardElement = card.generateCard(element);
       // Добавляем в DOM
     cards.append(cardElement);
   });

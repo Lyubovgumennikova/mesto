@@ -1,7 +1,9 @@
 class Card {
-  constructor(data, cardSelector) {
-    this._link = data.link;
-    this._name = data.name;
+  
+
+  constructor(cardSelector) {
+    // this._link = data.link;
+    // this._name = data.name;
     this._cardSelector = cardSelector;
   }
 
@@ -9,25 +11,25 @@ class Card {
     // забираем разметку из HTML и клонируем элемент
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content.querySelector(".element")
+      .content //.querySelector(".element")
       .cloneNode(true);
     // вернём DOM-элемент карточки
     return cardElement;
   }
 
-  generateCard() {
-    // Запишем разметку в приватное поле _element.
-    // Так у других элементов появится доступ к ней.
-    this._element = this._getTemplate();
-    this._setEventListeners();
-    // Добавим данные
-    this._element.querySelector(".element__mask-group").src = this._link;
-    this._element.querySelector(".element__mask-group").alt = this._link;
-    this._element.querySelector(".element__text").textContent = this._name;
+  // generateCard() {
+  //   // Запишем разметку в приватное поле _element.
+  //   // Так у других элементов появится доступ к ней.
+  //   this._element = this._getTemplate();
+  //   this._setEventListeners();
+  //   // Добавим данные
+  //   this._element.querySelector(".element__mask-group").src = this._link;
+  //   this._element.querySelector(".element__mask-group").alt = this._link;
+  //   this._element.querySelector(".element__text").textContent = this._name;
 
-    // Вернём элемент наружу
-    return this._element;
-  }
+  //   // Вернём элемент наружу
+  //   return this._element;
+  // }
   // добавляtv все обработчики в одном месте (слушатели)
   _setEventListeners() {
     this._element
