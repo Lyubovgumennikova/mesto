@@ -6,6 +6,9 @@ const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
 const deleteButtonElement = document.querySelector(".element__remove-button");
 
+const likeButtonElement = document.querySelector(".element__vector");
+const submitButtonElement = document.querySelector(".popup__submit-button");
+
 const cloceButtonProfil = popupEditElement.querySelector(".popup__close_type_edit");
 const cloceButtonCard = popupCardElement.querySelector(".popup__close_type_new-card");
 const cloceButtonImage = popupImageElement.querySelector(".popup__close_type_image");
@@ -31,79 +34,88 @@ const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
 const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
 
 
-class InitialCard extends Card {
-  //static _template = document.querySelector('#todolist-item-template').content;
-
-  constructor(data, cardSelector) {
-    super(cardSelector);
-    this._link = data.link;
-    this._name = data.name;
-  }
-  generateCard() {
-    // Запишем разметку в приватное поле _element.
-    // Так у других элементов появится доступ к ней.
-    this._element = super._getTemplate();
-    
-    //this._setEventListeners();
-    // Добавим данные
-    this._element.querySelector(".element__mask-group").src = this._link;
-    this._element.querySelector(".element__mask-group").alt = this._link;
-    this._element.querySelector(".element__text").textContent = this._name;
-
-    // Вернём элемент наружу
-    return this._element;
-  }
-}
-
-class addItemCard extends Card {
-  constructor(addItem, cardSelector){
- //super(data); 
- super(cardSelector);  
- this._addItem = addItem;
-  }
+// class AddItemCard extends Card {
+//   constructor( cardSelector) {
+//     super(cardSelector);
+//     // this._link = data.link;
+//     // this._name = data.name;
+//   }
  
    
 
-   _submitCardsForm(evt) {
+   function submitCardsForm(evt) {
     evt.preventDefault();
     addItem = {
       name: mestInput.value,
       link: cardInput.value,
     };
   }
-    generateCard() {
-      this._element = super._getTemplate();
-      super._setEventListeners();   
-      formCardElement.addEventListener('submit', this._submitHandler);
-      return this._element;
+//     generateCard() {
+//       this._element = super._getTemplate();
+//       super._setEventListeners();   
+//       //formCardElement.addEventListener('submit', this._submitHandler);
+//       return {
+//         name: mestInput.value,
+//         link: cardInput.value,
+//       };
+//       //this._element;
   
-    }
+//     }
     
     // closePopup(popupCardElement);
     // mestInput.value = "";
     // cardInput.value = "";
     // toggleButton(formCardElement, config);
   
-}
+//}
 
-const renderElements = (isGrid) => {
-  cards.innerHTML = '';
+ function renderCard  (element)  {
+    //cards.innerHTML = '';
+    
+//     
+      
+//     const card = isGrid
+//     ? new AddItemCard(element, '.card-template_type_image')
+//     : new Card (element, '.card-template');
+
+//     // ? new addItemCard(item, '.card-template')
+//     // : new Card(element, '.card-template');
+//     // Создаём карточку и возвращаем наружу
+  
+      //const cardElement = card.generateCard();
+//       // Добавляем в DOM
+      cards.append(element);
+//   });
+    
+  }
+
+// 
+
+// function createCard (elemen) {
+  //cards.innerHTML = '';
   initialCards.forEach((element) => {
-    // Создадим экземпляр карточки
-    const card = isGrid
-    ? new addItemCard(element, '.card-template')
-    : new InitialCard (element, '.card-template');
+  // Создадим экземпляр карточки
+  const card = new Card (element, '.card-template');
+  // вызовем метод
+  const cardElement = card.generateCard(); 
+  // return {
+  //   name: mestInput.value,
+  //   link: cardInput.value,
+  // };
+  
+  return renderCard(cardElement);
+});
+//}
 
-    // ? new addItemCard(item, '.card-template')
-    // : new Card(element, '.card-template');
-        // Создаём карточку и возвращаем наружу
-    const cardElement = card.generateCard(element);
-      // Добавляем в DOM
-    cards.append(cardElement);
-  });
-}
+  
+    // _addItem = (text) => {
+    //   this._createTodoListItem(text, this._addItem).render(this._view);
+    // }
+  
+//cards.forEach((cardInfo) => new Card(cardInfo….
 
-renderElements();
+
+//renderCard();
 
 function clocePopupClickOverlay(event) {
   if (event.target !== event.currentTarget) {
@@ -141,7 +153,7 @@ function submitProfileForm(evt) {
 
 
 formProfileElement.addEventListener("submit", submitProfileForm);
-//formCardElement.addEventListener("submit", generateCard());
+//formCardElement.addEventListener("submit", new AddItemCard());
 
 popupOpenButtonElement.addEventListener("click", function () {
   nameInput.value = nameProfile.textContent;
