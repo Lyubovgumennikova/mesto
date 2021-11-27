@@ -56,8 +56,7 @@ class Card {
       // this._element
       // .querySelector(".popup__submit-button")
       //.addEventListener("submit", this._submitCardsForm) 
-    // formCardElement.addEventListener("submit", this._submitCardsForm);   
-      
+          
 
     }
 
@@ -72,25 +71,11 @@ class Card {
     this._element = null;
   }
 
-  // _deleteClick(evt) {
-  //   evt.target.closest(".element").remove();
-  //   this._element.remove();
-  // }
-
-  _handleOpenPopup() {
+    _handleOpenPopup() {
     imageCardPopup.src = this._link;
     imageCardPopup.alt = this._link;
     imageTextPopup.textContent = this._name;
     popupImageElement.classList.add("popup_opened");
-  }
-
-  _submitCardsForm(evt) {
-    evt.preventDefault();
-    return {
-              name: mestInput.value,
-              link: cardInput.value,
-            };
-    
   }
 
 }
