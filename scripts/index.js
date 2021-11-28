@@ -67,13 +67,13 @@ function submitCardsForm(evt) {
   };
 
   //cardElement
-   const card = new Card(evt, ".card-template_type_image");
-  // // вызовем метод
-   card.generateCard(addInputCard);
+  //  const card = new Card(evt, ".card-template_type_image");
+  // // // вызовем метод
+  //  card.generateCard(addInputCard);
 
 
   
-  //renderCard(cardElement);
+  // createCard(addInputCard);
   closePopup(popupCardElement);
   mestInput.value = "";
   cardInput.value = "";
@@ -82,7 +82,7 @@ function submitCardsForm(evt) {
   //   name: mestInput.value,
   //   link: cardInput.value,
   // };
-  return renderCard(addInputCard)
+  return createCard(addInputCard)
 }
 //     generateCard() {
 //       this._element = super._getTemplate();
@@ -113,20 +113,30 @@ function renderCard(element) {
 
 //
 
+const createCard = (isGrid) => {
+ //cards.innerHTML = '';
+ const card = isGrid
+ ? new Card(isGrid, '.card-template')
+ : new Card(element, ".card-template");
+ const cardElement = card.generateCard();
+ return renderCard(cardElement);
+ }
 
 initialCards.forEach((element) => {
   // Создадим экземпляр карточки
-  const card = new Card(element, ".card-template");
+  // const card = new Card(element, ".card-template");
   // вызовем метод
-  const cardElement = card.generateCard();
-  // return {
-  //   name: mestInput.value,
-  //   link: cardInput.value,
-  // };
+  
+  return createCard(element)
 
-  return renderCard(cardElement);
 });
-//}
+
+// const card = isGrid
+// ? new Card(isGrid, '.card-template')
+// : new Card(element, ".card-template");
+// const cardElement = card.generateCard();
+// return renderCard(cardElement);
+// }
 
 // _addItem = (text) => {
 //   this._createTodoListItem(text, this._addItem).render(this._view);
@@ -134,7 +144,7 @@ initialCards.forEach((element) => {
 
 //cards.forEach((cardInfo) => new Card(cardInfo….
 
-//renderCard();
+//createCard();
 
 function clocePopupClickOverlay(event) {
   if (event.target !== event.currentTarget) {
