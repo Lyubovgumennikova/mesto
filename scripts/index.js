@@ -39,19 +39,50 @@ const cardInput = popupCardElement.querySelector(".popup__input_card_image");
 const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
 const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
 
+// class HorizontalCard extends Card {
+//   constructor(data, cardSelector) {
+//     super(cardSelector);
+//     this._link = data.link;
+//     this._name = data.name;
+//   }
+//   submitCardsForm(evt) {
+//     evt.preventDefault();
+  
+//     const addInputCard = 
+//     {
+//       name: mestInput.value,
+//       _link = cardInput.value,
+//     };
+
+//     renderCard(addInputCard);
+// }
+// }
 function submitCardsForm(evt) {
   evt.preventDefault();
 
-  const addInputCard = {
+  const addInputCard = 
+  {
     name: mestInput.value,
     link: cardInput.value,
   };
-  generateCard(addInputCard)
-  renderCard(addInputCard);
+
+  //cardElement
+   const card = new Card(evt, ".card-template_type_image");
+  // // вызовем метод
+   card.generateCard(addInputCard);
+
+
+  
+  //renderCard(cardElement);
   closePopup(popupCardElement);
   mestInput.value = "";
   cardInput.value = "";
   toggleButton(formCardElement, config);
+  // return {
+  //   name: mestInput.value,
+  //   link: cardInput.value,
+  // };
+  return renderCard(addInputCard)
 }
 //     generateCard() {
 //       this._element = super._getTemplate();
