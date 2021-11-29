@@ -56,9 +56,25 @@ class Card {
       // this._element
       // .querySelector(".popup__submit-button")
       //.addEventListener("submit", this._submitCardsForm) 
+
+     if (this._element
+      .key === "Escape") {
+        this._clocePopupClickByEsc();
+      }
+        //.key === "Escape" 
+      //}
+      
           
 
     }
+  _clocePopupClickByEsc() {
+    this._element
+    .querySelector(".popup_opened")
+    .classList.remove("popup_opened");
+
+    
+    //closePopup(popup);
+  }
 
   _likeClick() {
     this._element

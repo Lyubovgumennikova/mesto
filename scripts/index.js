@@ -39,24 +39,7 @@ const cardInput = popupCardElement.querySelector(".popup__input_card_image");
 const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
 const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
 
-// class HorizontalCard extends Card {
-//   constructor(data, cardSelector) {
-//     super(cardSelector);
-//     this._link = data.link;
-//     this._name = data.name;
-//   }
-//   submitCardsForm(evt) {
-//     evt.preventDefault();
-  
-//     const addInputCard = 
-//     {
-//       name: mestInput.value,
-//       _link = cardInput.value,
-//     };
 
-//     renderCard(addInputCard);
-// }
-// }
 function submitCardsForm(evt) {
   evt.preventDefault();
 
@@ -66,14 +49,6 @@ function submitCardsForm(evt) {
     link: cardInput.value,
   };
 
-  //cardElement
-  //  const card = new Card(evt, ".card-template_type_image");
-  // // // вызовем метод
-  //  card.generateCard(addInputCard);
-
-
-  
-  // createCard(addInputCard);
   closePopup(popupCardElement);
   mestInput.value = "";
   cardInput.value = "";
@@ -84,27 +59,10 @@ function submitCardsForm(evt) {
   // };
   return createCard(addInputCard)
 }
-//     generateCard() {
-//       this._element = super._getTemplate();
-//       super._setEventListeners();
-//       //formCardElement.addEventListener('submit', this._submitHandler);
-//       return {
-//         name: mestInput.value,
-//         link: cardInput.value,
-//       };
-//       //this._element;
 
-//     }
-
-// closePopup(popupCardElement);
-// mestInput.value = "";
-// cardInput.value = "";
-// toggleButton(formCardElement, config);
-
-//}
 
 function renderCard(element) {
-  //cards.innerHTML = '';
+  // cards.innerHTML = '';
   
         // Добавляем в DOM
   cards.prepend(element);
@@ -131,20 +89,6 @@ initialCards.forEach((element) => {
 
 });
 
-// const card = isGrid
-// ? new Card(isGrid, '.card-template')
-// : new Card(element, ".card-template");
-// const cardElement = card.generateCard();
-// return renderCard(cardElement);
-// }
-
-// _addItem = (text) => {
-//   this._createTodoListItem(text, this._addItem).render(this._view);
-// }
-
-//cards.forEach((cardInfo) => new Card(cardInfo….
-
-//createCard();
 
 function clocePopupClickOverlay(event) {
   if (event.target !== event.currentTarget) {
