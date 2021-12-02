@@ -92,6 +92,7 @@ class Card {
     imageCardPopup.alt = this._link;
     imageTextPopup.textContent = this._name;
     popupImageElement.classList.add("popup_opened");
+    document.addEventListener("keyup", clocePopupClickByEsc);
   }
 
 }
