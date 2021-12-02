@@ -49,6 +49,8 @@ const config = {
 };
 
 
+
+
 function submitCardsForm(evt) {
   evt.preventDefault();
 

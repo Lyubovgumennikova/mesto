@@ -1,11 +1,4 @@
-// const config = {
-//   formSelector: ".popup__content",
-//   inputSelector: ".popup__input",
-//   submitButtonSelector: ".popup__submit-button",
-//   inactiveButtonClass: "popup__submit-button_disabled",
-//   inputErrorClass: "popup__input_type_error",
-//   errorClass: "popup__input-error_active",
-// };
+               
 
 class FormValidator {
   constructor(config, form) {
@@ -18,8 +11,6 @@ class FormValidator {
     this._form = form;
   }
   enableValidation() {
-    
-
     const formElement = document.querySelector(this._formSelector); //  ".popup__content"
     //formList.forEach((formElement) => {
         formElement.addEventListener("submit", function (evt) {
@@ -30,7 +21,7 @@ class FormValidator {
   }
 
   _setEventListeners(formElement) {
-    const inputs = Array.from(document.querySelectorAll(config.inputSelector)); //   '.popup__input'
+    const inputs = Array.from(formElement.querySelectorAll(config.inputSelector)); //   '.popup__input'
     const button = formElement.querySelector(this._submitButtonSelector); //    '.popup__submit-button'
     this._toggleButton(formElement, button);
     inputs.forEach((input) => {
@@ -93,6 +84,5 @@ class FormValidator {
 //  });
 //  new FormValidator (config, form).enableValidation();
 // })
-
 const form = new FormValidator(config, ".popup_opened");
 form.enableValidation(form);

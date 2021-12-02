@@ -61,7 +61,7 @@ _showInputError = (formElement, inputElement, errorMessage) => {
   };
   
   enableValidation = () => {
-    const formElement = document.querySelector(this._form); //  ".popup__content"
+    const formElement = document.querySelector(this._formSelector); //  ".popup__content"
     //formList.forEach((formElement) => {
         formElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
