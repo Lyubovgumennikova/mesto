@@ -1,4 +1,4 @@
-class Card {
+export class Card {
     constructor(data, cardSelector) {
     this._link = data.link;
     this._name = data.name;

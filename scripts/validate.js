@@ -1,5 +1,11 @@
-               
-
+const config = {
+  formSelector: ".popup__content",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active",
+};
 class FormValidator {
   constructor(config, form) {
     this._formSelector = config.formSelector;

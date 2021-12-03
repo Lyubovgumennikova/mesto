@@ -1,3 +1,7 @@
+import  {initialCards, config} from './array.js';
+import {Card} from './Card .js';
+
+
 const popupEditElement = document.querySelector(".popup_type_edit");
 const popupCardElement = document.querySelector(".popup_type_new-card");
 const popupImageElement = document.querySelector(".popup_type_image");
@@ -39,17 +43,15 @@ const cardInput = popupCardElement.querySelector(".popup__input_card_image");
 const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
 const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
 
-const config = {
-  formSelector: ".popup__content",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__submit-button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
-};
 
 
+const formValid = () => {
+  new FormValidator (config, '.popup_opened');  // popup_opened"
+  formValid .enableValidation();
+}
 
+// const formValid = new FormValidator(config, ".popup_opened");
+// formValid.enableValidation();
 
 function submitCardsForm(evt) {
   evt.preventDefault();
@@ -112,6 +114,10 @@ function clocePopupClickOverlay(event) {
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
   document.addEventListener("keyup", clocePopupClickByEsc);
+  // const form = () => {
+  //   new FormValidator (config, '.popup_opened');  // popup_opened"
+  //     form.enableValidation();
+  //}
 //   const form = new FormValidator(config, ".popup_opened");
 // form.enableValidation();
 }
@@ -164,3 +170,5 @@ cloceButtonImage.addEventListener("click", function () {
 popupEditElement.addEventListener("mousedown", clocePopupClickOverlay);
 popupCardElement.addEventListener("mousedown", clocePopupClickOverlay);
 popupImageElement.addEventListener("mousedown", clocePopupClickOverlay);
+
+
