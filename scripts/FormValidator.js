@@ -10,9 +10,9 @@ export class FormValidator {
   }
 
   enableValidation() {
-    const formElement = document.querySelector(this._formSelector); //  ".popup__content"
-    //formList.forEach((formElement) => {
-        formElement.addEventListener("submit", function (evt) {
+    const form = document.querySelector(this._form); 
+    const formElement = form.querySelector(this._formSelector); //  ".popup__content"
+      formElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
       });
       this._setEventListeners(formElement);

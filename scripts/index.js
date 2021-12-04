@@ -2,7 +2,7 @@ import  {initialCards, config} from './array.js';
 import {Card} from './Card .js  ';
 import {FormValidator} from './FormValidator.js';
 
-
+const popupElement = document.querySelector(".popup_opened");
 const popupEditElement = document.querySelector(".popup_type_edit");
 const popupCardElement = document.querySelector(".popup_type_new-card");
 const popupImageElement = document.querySelector(".popup_type_image");
@@ -116,12 +116,8 @@ function clocePopupClickOverlay(event) {
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
   document.addEventListener("keyup", clocePopupClickByEsc);
-  // const form = () => {
-  //   new FormValidator (config, '.popup_opened');  // popup_opened"
-  //     form.enableValidation();
-  //}
-//   const form = new FormValidator(config, ".popup_opened");
-// form.enableValidation();
+  const form = new FormValidator(config, '.popup_opened');
+  form.enableValidation();
 }
 
 
@@ -215,5 +211,5 @@ popupCardElement.addEventListener("mousedown", clocePopupClickOverlay);
 popupImageElement.addEventListener("mousedown", clocePopupClickOverlay);
 
 
-const form = new FormValidator(config, ".popup_opened");
-form.enableValidation(form);
+// const form = new FormValidator(config, ".popup_opened");
+// form.enableValidation(form);
