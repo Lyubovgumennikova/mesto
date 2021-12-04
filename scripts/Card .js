@@ -1,3 +1,8 @@
+//import { openPopup } from "./index.js";
+const popupImageElement = document.querySelector(".popup_type_image");
+const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
+const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
+
 export class Card {
   constructor(data, cardSelector) {
     this._link = data.link;
@@ -9,8 +14,7 @@ export class Card {
     // забираем разметку из HTML и клонируем элемент
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content 
-      .querySelector(".element")
+      .content.querySelector(".element")
       .cloneNode(true);
     // вернём DOM-элемент карточки
     return cardElement;
@@ -28,15 +32,11 @@ export class Card {
   }
   // добавляtv все обработчики в одном месте (слушатели)
   _setEventListeners() {
-    
-    // this._element
-    //   .querySelector(".element__mask-group")
-    //   .addEventListener("click", () => {
-    //     this._handleOpenPopup();
-    //   });
-    // popupCloseButton.addEventListener("click", () => {
-    //   this._handleClosePopup();
-    // });
+    this._element
+      .querySelector(".element__mask-group")
+      .addEventListener("click", () => {
+        this._handleOpenPopup(popupImageElement);
+      });
 
     this._element
       .querySelector(".element__vector")
@@ -53,8 +53,8 @@ export class Card {
 
   _clocePopupClickByEsc() {
     this._element
-    .querySelector(".popup_opened")
-    .classList.remove("popup_opened");
+      .querySelector(".popup_opened")
+      .classList.remove("popup_opened");
   }
 
   _likeClick() {
@@ -68,13 +68,11 @@ export class Card {
     this._element = null;
   }
 
-  //   _handleOpenPopup() {
-    
-  //   imageCardPopup.src = this._link;
-  //   imageCardPopup.alt = this._link;
-  //   imageTextPopup.textContent = this._name;
-  //   popupImageElement.classList.add("popup_opened");
-  //   document.addEventListener("keyup", clocePopupClickByEsc);
-  // }
-
+  _handleOpenPopup() {
+    imageCardPopup.src = this._link;
+    imageCardPopup.alt = this._link;
+    imageTextPopup.textContent = this._name;
+    popupImageElement.classList.add("popup_opened");
+    //document.addEventListener("keyup", clocePopupClickByEsc);
+  }
 }
