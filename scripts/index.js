@@ -38,9 +38,8 @@ const createCard = (isGrid) => {
   const card = isGrid
     ? new Card(isGrid, ".card-template")
     : new Card(element, ".card-template", openPopup());
-    document.addEventListener("keydown", clocePopupClickByEsc);
-    
   const cardElement = card.generateCard();
+  document.addEventListener("keydown", clocePopupClickByEsc);
   return renderCard(cardElement);
 };
 
@@ -109,29 +108,6 @@ popupOpenButtonElement.addEventListener("click", function () {
   openPopup(popupEditElement);
 });
 
-// const imageElement = function (event) {
-//   event.currentTarget('.element__mask-group');
-// }
-
-// export const popupOpenImageElement = function (link, name) {
-//   imageTextPopup.textContent = name;
-//   imageCardPopup.src = link;
-//   imageCardPopup.alt = name;
-//     openPopup(popupImageElement);
-// }
-
-// function clocePopupClickByEsc(evt) {
-//   if (evt.key === 'Escape') {
-//     const popup = document.querySelector(".popup_opened");
-//     closePopup(popup);
-//   };
-// };
-
-// imageElement.addEventListener('click',function(evt) {
-//   evt.target.closest('.element__mask-group');
-//   popupOpenImageElement();
-// });
-
 popupAddButtonElement.addEventListener("click", function () {
   openPopup(popupCardElement);
 });
@@ -139,10 +115,11 @@ popupAddButtonElement.addEventListener("click", function () {
 cloceButtonProfil.addEventListener("click", function () {
   closePopup(popupEditElement);
 });
+
 cloceButtonCard.addEventListener("click", function () {
-  //setSubmitButtonState(popupInputElement, popupButtonElement, false);
   closePopup(popupCardElement);
 });
+
 cloceButtonImage.addEventListener("click", function () {
   closePopup(popupImageElement);
 });
