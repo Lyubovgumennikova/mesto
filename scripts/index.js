@@ -2,6 +2,7 @@ import { initialCards, config } from "./array.js";
 import { Card } from "./Card .js  ";
 import { FormValidator } from "./FormValidator.js";
 
+const popups = document.querySelectorAll('.popup');
 const popupEditElement = document.querySelector(".popup_type_edit");
 const popupCardElement = document.querySelector(".popup_type_new-card");
 const popupImageElement = document.querySelector(".popup_type_image");
@@ -9,7 +10,6 @@ const popupImageElement = document.querySelector(".popup_type_image");
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
 
-//const popupImageElement = document.querySelector(".popup_type_image");
 const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
 const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
 
@@ -54,7 +54,7 @@ initialCards.forEach((element) => {
   return createCard(element);
 });
 
-export function openPopup(popupElement) {
+function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
   document.addEventListener("keyup", closeByEscape);
 }
@@ -93,10 +93,8 @@ popupOpenButtonElement.addEventListener("click", function () {
 popupAddButtonElement.addEventListener("click", function () {
   openPopup(popupCardElement);
   const formElement = new FormValidator(config, popupCardElement);
-formElement.enableValidation();
+  formElement.enableValidation();
 });
-
-const popups = document.querySelectorAll('.popup')
 
 popups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
@@ -109,7 +107,7 @@ popups.forEach((popup) => {
     })
 })
 
-export const handleCardClick = function(link, name) {
+const handleCardClick = function(link, name) {
   imageCardPopup.src = link;   // устанавливаем ссылку
   imageCardPopup.alt = name; 
   imageTextPopup.textContent = name;  // устанавливаем подпись картинке

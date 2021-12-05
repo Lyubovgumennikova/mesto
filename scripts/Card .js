@@ -35,10 +35,9 @@ export class Card {
   }
   // добавляtv все обработчики в одном месте (слушатели)
   _setEventListeners() {
-    this._element 
-      .querySelector(".element__mask-group") 
+    this._cardImage
       .addEventListener("click", () => { 
-        this._handleOpenPopup(popupImageElement); 
+        this._handleOpenPopup(); 
     }); 
 
     this._likeButton
