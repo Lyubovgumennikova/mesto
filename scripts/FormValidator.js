@@ -10,8 +10,9 @@ export class FormValidator {
   }
 
   enableValidation() {
-    //const form = document.querySelector(this._form); 
-    //const formElement = form.querySelector(this._formSelector); //  ".popup__content"
+    this._submitButton = this._form.querySelector(this._submitButtonSelector); //    '.popup__submit-button'
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector)); //   '.popup__input'
+    this._formElement = this._form.querySelector(this._formSelector);
     // this._formSelector.addEventListener("submit", function (evt) {
     //     evt.preventDefault();
     //   });
@@ -19,13 +20,11 @@ export class FormValidator {
   }
 
   _setEventListeners() {
-    const inputs = Array.from(this._form.querySelectorAll(this._inputSelector)); //   '.popup__input'
-    const button = this._form.querySelector(this._submitButtonSelector); //    '.popup__submit-button'
-    this._toggleButton(button);
-    inputs.forEach((input) => {
+    this._toggleButton();
+    this._inputList.forEach((input) => {
         input.addEventListener('input', (evt) => {
         this._handleFieldValidation(evt);
-        this._toggleButton(button);
+        this._toggleButton();
         });
     });
   }
@@ -35,7 +34,6 @@ export class FormValidator {
     const errorContainer = this._form.querySelector(
       `#${element.id}-error`
     );
-
     if (!element.validity.valid) {
       element.classList.add(this._inputErrorClass); //'popup__input_type_error'
       element.classList.add(this._errorClass);
@@ -46,10 +44,9 @@ export class FormValidator {
     errorContainer.textContent = element.validationMessage;
   }
 
-  _toggleButton(button) {
-    const formElement = this._form.querySelector(this._formSelector); 
-    const isFormInvalid = !formElement.checkValidity();
-    button.disabled = isFormInvalid;
-    button.classList.toggle(this._inactiveButtonClass, isFormInvalid); //    'popup__submit-button_disabled'
+  _toggleButton() {
+    const isFormInvalid = !this._formElement.checkValidity();
+    this._submitButton.disabled = isFormInvalid;
+    this._submitButton.classList.toggle(this._inactiveButtonClass, isFormInvalid); //    'popup__submit-button_disabled'
   }
 }

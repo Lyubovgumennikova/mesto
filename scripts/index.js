@@ -27,11 +27,8 @@ const formCardElement = popupCardElement.querySelector(".popup__content");
 const mestInput = popupCardElement.querySelector(".popup__input_card_name");
 const cardInput = popupCardElement.querySelector(".popup__input_card_image");
 
-const createCard = (isGrid) => {
-  //cards.innerHTML = '';
-  const card = isGrid
-    ? new Card(isGrid, ".card-template")
-    : new Card(element, ".card-template", openPopup());
+const createCard = (item) => {
+  const card = new Card(item, ".card-template", openPopup)
   const cardElement = card.generateCard();
   return renderCard(cardElement);
 };
@@ -112,12 +109,12 @@ popups.forEach((popup) => {
     })
 })
 
-// const handleCardClick = function(link, name) {
-//   imageCardPopup.src = link;   // устанавливаем ссылку
-//   imageCardPopup.alt = name; 
-//   imageTextPopup.textContent = name;  // устанавливаем подпись картинке
-//       openPopup(popupImageElement); // открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
-// }
+export const handleCardClick = function(link, name) {
+  imageCardPopup.src = link;   // устанавливаем ссылку
+  imageCardPopup.alt = name; 
+  imageTextPopup.textContent = name;  // устанавливаем подпись картинке
+      openPopup(popupImageElement); // открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
+}
 // handleCardClick.generateCard();
 
 // const form = new FormValidator(config, ".popup_opened");

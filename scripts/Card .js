@@ -1,17 +1,13 @@
-//import  { handleCardClick(name, link) } from "./index.js";
-import { openPopup } from "./index.js"; 
 const popupImageElement = document.querySelector(".popup_type_image");
 const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
 const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
-const likeButton = popupImageElement.querySelector(".element__vector");
 
 export class Card {
-  constructor(data, cardSelector, handleCardClick, likeButton) {
+  constructor(data, cardSelector, openPopup) {
     this._link = data.link;
     this._name = data.name;
     this._cardSelector = cardSelector;
-    this._handleCardClick = handleCardClick;
-    this._likeButton = likeButton;
+    this._openPopup = openPopup;
   }
 
   _getTemplate() {
@@ -26,8 +22,9 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._cardImage = this._element.querySelector(".element__mask-group")
-    this._cardText = this._element.querySelector(".element__text")
+    this._cardImage = this._element.querySelector(".element__mask-group");
+    this._cardText = this._element.querySelector(".element__text");
+    this._likeButton = this._element.querySelector(".element__vector");
     this._setEventListeners();
     // Добавим данные
     this._cardImage.src = this._link;
@@ -38,27 +35,22 @@ export class Card {
   }
   // добавляtv все обработчики в одном месте (слушатели)
   _setEventListeners() {
-    // this._cardImage.addEventListener('click', () => {
-    //   this._handleCardClick(this._link, this._name)
-    // });
-
     this._element 
       .querySelector(".element__mask-group") 
       .addEventListener("click", () => { 
         this._handleOpenPopup(popupImageElement); 
-      }); 
+    }); 
 
-    this._element
-      .querySelector(".element__vector")
+    this._likeButton
       .addEventListener("click", () => {
         this._likeClick();
-      });
+    });
 
     this._element
       .querySelector(".element__remove-button")
       .addEventListener("click", () => {
         this._deleteClick();
-      });
+    });
   }
 
   _likeClick() {
@@ -75,6 +67,6 @@ export class Card {
     imageCardPopup.src = this._link;
     imageCardPopup.alt = this._link;
     imageTextPopup.textContent = this._name;
-    openPopup(popupImageElement)
+    this._openPopup(popupImageElement)
   }
 }
