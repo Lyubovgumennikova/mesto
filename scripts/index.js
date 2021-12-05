@@ -9,15 +9,9 @@ const popupImageElement = document.querySelector(".popup_type_image");
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
 
-const cloceButtonProfil = popupEditElement.querySelector(
-  ".popup__close_type_edit"
-);
-const cloceButtonCard = popupCardElement.querySelector(
-  ".popup__close_type_new-card"
-);
-const cloceButtonImage = popupImageElement.querySelector(
-  ".popup__close_type_image"
-);
+//const popupImageElement = document.querySelector(".popup_type_image");
+const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
+const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
 
 const cards = document.querySelector(".elements");
 
@@ -39,7 +33,6 @@ const createCard = (isGrid) => {
     ? new Card(isGrid, ".card-template")
     : new Card(element, ".card-template", openPopup());
   const cardElement = card.generateCard();
-  document.addEventListener("keydown", clocePopupClickByEsc);
   return renderCard(cardElement);
 };
 
@@ -64,27 +57,17 @@ initialCards.forEach((element) => {
   return createCard(element);
 });
 
-function clocePopupClickOverlay(event) {
-  if (event.target !== event.currentTarget) {
-    return;
-  }
-  const popup = document.querySelector(".popup_opened");
-  closePopup(popup);
-}
-
-function openPopup(popupElement) {
+export function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
-  document.addEventListener("keyup", clocePopupClickByEsc);
-  const form = new FormValidator(config, ".popup_opened");
-  form.enableValidation();
+  document.addEventListener("keyup", closeByEscape);
 }
 
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
-  document.removeEventListener("keyup", clocePopupClickByEsc);
+  document.removeEventListener("keyup", closeByEscape);
 }
 
-function clocePopupClickByEsc(evt) {
+function closeByEscape(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector(".popup_opened");
     closePopup(popup);
@@ -106,24 +89,36 @@ popupOpenButtonElement.addEventListener("click", function () {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
   openPopup(popupEditElement);
+  const form = new FormValidator(config, popupEditElement);
+  form.enableValidation();
 });
 
 popupAddButtonElement.addEventListener("click", function () {
   openPopup(popupCardElement);
+  const formElement = new FormValidator(config, popupCardElement);
+formElement.enableValidation();
 });
 
-cloceButtonProfil.addEventListener("click", function () {
-  closePopup(popupEditElement);
-});
+const popups = document.querySelectorAll('.popup')
 
-cloceButtonCard.addEventListener("click", function () {
-  closePopup(popupCardElement);
-});
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+          closePopup(popup)
+        }
+    })
+})
 
-cloceButtonImage.addEventListener("click", function () {
-  closePopup(popupImageElement);
-});
+// const handleCardClick = function(link, name) {
+//   imageCardPopup.src = link;   // устанавливаем ссылку
+//   imageCardPopup.alt = name; 
+//   imageTextPopup.textContent = name;  // устанавливаем подпись картинке
+//       openPopup(popupImageElement); // открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
+// }
+// handleCardClick.generateCard();
 
-popupEditElement.addEventListener("mousedown", clocePopupClickOverlay);
-popupCardElement.addEventListener("mousedown", clocePopupClickOverlay);
-popupImageElement.addEventListener("mousedown", clocePopupClickOverlay);
+// const form = new FormValidator(config, ".popup_opened");
+// form.enableValidation();

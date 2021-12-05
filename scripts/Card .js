@@ -1,13 +1,17 @@
-//import { openPopup } from "./index.js";
+//import  { handleCardClick(name, link) } from "./index.js";
+import { openPopup } from "./index.js"; 
 const popupImageElement = document.querySelector(".popup_type_image");
 const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
 const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
+const likeButton = popupImageElement.querySelector(".element__vector");
 
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick, likeButton) {
     this._link = data.link;
     this._name = data.name;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
+    this._likeButton = likeButton;
   }
 
   _getTemplate() {
@@ -22,21 +26,27 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector(".element__mask-group")
+    this._cardText = this._element.querySelector(".element__text")
     this._setEventListeners();
     // Добавим данные
-    this._element.querySelector(".element__mask-group").src = this._link;
-    this._element.querySelector(".element__mask-group").alt = this._link;
-    this._element.querySelector(".element__text").textContent = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._link;
+    this._cardText.textContent = this._name;
     // Вернём элемент наружу
     return this._element;
   }
   // добавляtv все обработчики в одном месте (слушатели)
   _setEventListeners() {
-    this._element
-      .querySelector(".element__mask-group")
-      .addEventListener("click", () => {
-        this._handleOpenPopup(popupImageElement);
-      });
+    // this._cardImage.addEventListener('click', () => {
+    //   this._handleCardClick(this._link, this._name)
+    // });
+
+    this._element 
+      .querySelector(".element__mask-group") 
+      .addEventListener("click", () => { 
+        this._handleOpenPopup(popupImageElement); 
+      }); 
 
     this._element
       .querySelector(".element__vector")
@@ -51,15 +61,8 @@ export class Card {
       });
   }
 
-  _clocePopupClickByEsc() {
-    this._element
-      .querySelector(".popup_opened")
-      .classList.remove("popup_opened");
-  }
-
   _likeClick() {
-    this._element
-      .querySelector(".element__vector")
+    this._likeButton
       .classList.toggle("element__vector_active");
   }
 
@@ -72,6 +75,6 @@ export class Card {
     imageCardPopup.src = this._link;
     imageCardPopup.alt = this._link;
     imageTextPopup.textContent = this._name;
-    popupImageElement.classList.add("popup_opened");
+    openPopup(popupImageElement)
   }
 }

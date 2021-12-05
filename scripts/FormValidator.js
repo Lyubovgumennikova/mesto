@@ -10,29 +10,29 @@ export class FormValidator {
   }
 
   enableValidation() {
-    const form = document.querySelector(this._form); 
-    const formElement = form.querySelector(this._formSelector); //  ".popup__content"
-      formElement.addEventListener("submit", function (evt) {
-        evt.preventDefault();
-      });
-      this._setEventListeners(formElement);
+    //const form = document.querySelector(this._form); 
+    //const formElement = form.querySelector(this._formSelector); //  ".popup__content"
+    // this._formSelector.addEventListener("submit", function (evt) {
+    //     evt.preventDefault();
+    //   });
+      this._setEventListeners();
   }
 
-  _setEventListeners(formElement) {
-    const inputs = Array.from(formElement.querySelectorAll(this._inputSelector)); //   '.popup__input'
-    const button = formElement.querySelector(this._submitButtonSelector); //    '.popup__submit-button'
-    this._toggleButton(formElement, button);
+  _setEventListeners() {
+    const inputs = Array.from(this._form.querySelectorAll(this._inputSelector)); //   '.popup__input'
+    const button = this._form.querySelector(this._submitButtonSelector); //    '.popup__submit-button'
+    this._toggleButton(button);
     inputs.forEach((input) => {
         input.addEventListener('input', (evt) => {
         this._handleFieldValidation(evt);
-        this._toggleButton(formElement, button);
+        this._toggleButton(button);
         });
     });
   }
 
   _handleFieldValidation(evt) {
     const element = evt.target;
-    const errorContainer = document.querySelector(
+    const errorContainer = this._form.querySelector(
       `#${element.id}-error`
     );
 
@@ -46,7 +46,8 @@ export class FormValidator {
     errorContainer.textContent = element.validationMessage;
   }
 
-  _toggleButton(formElement, button) {
+  _toggleButton(button) {
+    const formElement = this._form.querySelector(this._formSelector); 
     const isFormInvalid = !formElement.checkValidity();
     button.disabled = isFormInvalid;
     button.classList.toggle(this._inactiveButtonClass, isFormInvalid); //    'popup__submit-button_disabled'
