@@ -5,13 +5,9 @@ import { FormValidator } from "./FormValidator.js";
 const popups = document.querySelectorAll('.popup');
 const popupEditElement = document.querySelector(".popup_type_edit");
 const popupCardElement = document.querySelector(".popup_type_new-card");
-const popupImageElement = document.querySelector(".popup_type_image");
 
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
-
-const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
-const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
 
 const cards = document.querySelector(".elements");
 
@@ -106,14 +102,3 @@ popups.forEach((popup) => {
         }
     })
 })
-
-const handleCardClick = function(link, name) {
-  imageCardPopup.src = link;   // устанавливаем ссылку
-  imageCardPopup.alt = name; 
-  imageTextPopup.textContent = name;  // устанавливаем подпись картинке
-      openPopup(popupImageElement); // открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
-}
-// handleCardClick.generateCard();
-
-// const form = new FormValidator(config, ".popup_opened");
-// form.enableValidation();

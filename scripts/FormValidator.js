@@ -13,9 +13,6 @@ export class FormValidator {
     this._submitButton = this._form.querySelector(this._submitButtonSelector); //    '.popup__submit-button'
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector)); //   '.popup__input'
     this._formElement = this._form.querySelector(this._formSelector);
-    // this._formSelector.addEventListener("submit", function (evt) {
-    //     evt.preventDefault();
-    //   });
       this._setEventListeners();
   }
 
