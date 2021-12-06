@@ -29,7 +29,6 @@ const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector))
   formList.forEach((formElement) => {
     const validateForm = new FormValidator(config, formElement)
-   // вот тут в объект записываем под именем формы
     formValidators[ formElement.name ] = validateForm;
     validateForm.enableValidation();
   });
@@ -95,18 +94,11 @@ popupOpenButtonElement.addEventListener("click", function () {
   jobInput.value = jobProfile.textContent;
   openPopup(popupEditElement);
   formValidators[ formProfileElement.name ].resetValidation();
-  // const form = new FormValidator(config, popupEditElement);
-  // form.enableValidation();
-  //formValidators[ popupEditElement.name ].resetValidation()
 });
 
 popupAddButtonElement.addEventListener("click", function () {
   openPopup(popupCardElement);
-  // const formElement = new FormValidator(config, popupCardElement);
-  // formElement.enableValidation();
   formValidators[ formCardElement.name ].resetValidation();
- 
-  
 });
 
 popups.forEach((popup) => {
@@ -119,10 +111,5 @@ popups.forEach((popup) => {
         }
     })
 })
-
-
-
-// Включение валидации
-
 
 enableValidation(config);
