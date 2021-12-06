@@ -1,18 +1,18 @@
 export class FormValidator {
-  constructor(config, form) {
+  constructor(config, validateForm) {
     this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
-    this._form = form;
+    this._validateForm = validateForm;
   }
 
   enableValidation() {
-    this._submitButton = this._form.querySelector(this._submitButtonSelector); //    '.popup__submit-button'
-    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector)); //   '.popup__input'
-    this._formElement = this._form.querySelector(this._formSelector);
+    this._submitButton = this._validateForm.querySelector(this._submitButtonSelector); //    '.popup__submit-button'
+    this._inputList = Array.from(this._validateForm.querySelectorAll(this._inputSelector)); //   '.popup__input'
+    //this._formElement = this._validateForm.querySelector(this._formSelector);
       this._setEventListeners();
   }
 
@@ -28,7 +28,7 @@ export class FormValidator {
 
   _handleFieldValidation(evt) {
     const element = evt.target;
-    const errorContainer = this._form.querySelector(
+    const errorContainer = this._validateForm.querySelector(
       `#${element.id}-error`
     );
     if (!element.validity.valid) {
@@ -42,7 +42,7 @@ export class FormValidator {
   }
 
   _toggleButton() {
-    const isFormInvalid = !this._formElement.checkValidity();
+    const isFormInvalid = !this._validateForm.checkValidity();
     this._submitButton.disabled = isFormInvalid;
     this._submitButton.classList.toggle(this._inactiveButtonClass, isFormInvalid); //    'popup__submit-button_disabled'
   }

@@ -82,14 +82,15 @@ popupOpenButtonElement.addEventListener("click", function () {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
   openPopup(popupEditElement);
-  const form = new FormValidator(config, popupEditElement);
-  form.enableValidation();
+  // const form = new FormValidator(config, popupEditElement);
+  // form.enableValidation();
+  formValidators[ popupEditElement.name ].resetValidation()
 });
 
 popupAddButtonElement.addEventListener("click", function () {
   openPopup(popupCardElement);
-  const formElement = new FormValidator(config, popupCardElement);
-  formElement.enableValidation();
+  // const formElement = new FormValidator(config, popupCardElement);
+  // formElement.enableValidation();
 });
 
 popups.forEach((popup) => {
@@ -102,3 +103,18 @@ popups.forEach((popup) => {
         }
     })
 })
+
+const formValidators = {}
+
+// Включение валидации
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  formList.forEach((formElement) => {
+    const validateForm = new FormValidator(config, formElement)
+   // вот тут в объект записываем под именем формы
+    formValidators[ formElement.name ] = validateForm;
+    validateForm.enableValidation();
+  });
+};
+
+enableValidation(config);
