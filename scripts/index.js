@@ -23,6 +23,18 @@ const formCardElement = popupCardElement.querySelector(".popup__content");
 const mestInput = popupCardElement.querySelector(".popup__input_card_name");
 const cardInput = popupCardElement.querySelector(".popup__input_card_image");
 
+const formValidators = {}
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  formList.forEach((formElement) => {
+    const validateForm = new FormValidator(config, formElement)
+   // вот тут в объект записываем под именем формы
+    formValidators[ formElement.name ] = validateForm;
+    validateForm.enableValidation();
+  });
+};
+
 const createCard = (item) => {
   const card = new Card(item, ".card-template", openPopup)
   const cardElement = card.generateCard();
@@ -82,15 +94,19 @@ popupOpenButtonElement.addEventListener("click", function () {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
   openPopup(popupEditElement);
+  formValidators[ formProfileElement.name ].resetValidation();
   // const form = new FormValidator(config, popupEditElement);
   // form.enableValidation();
-  formValidators[ popupEditElement.name ].resetValidation()
+  //formValidators[ popupEditElement.name ].resetValidation()
 });
 
 popupAddButtonElement.addEventListener("click", function () {
   openPopup(popupCardElement);
   // const formElement = new FormValidator(config, popupCardElement);
   // formElement.enableValidation();
+  formValidators[ formCardElement.name ].resetValidation();
+ 
+  
 });
 
 popups.forEach((popup) => {
@@ -104,17 +120,9 @@ popups.forEach((popup) => {
     })
 })
 
-const formValidators = {}
+
 
 // Включение валидации
-const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector))
-  formList.forEach((formElement) => {
-    const validateForm = new FormValidator(config, formElement)
-   // вот тут в объект записываем под именем формы
-    formValidators[ formElement.name ] = validateForm;
-    validateForm.enableValidation();
-  });
-};
+
 
 enableValidation(config);
