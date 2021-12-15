@@ -1,6 +1,7 @@
-import { initialCards, config } from "./array.js";
-import { Card } from "./Card .js  ";
-import { FormValidator } from "./FormValidator.js";
+import '../pages/index.css';
+import { initialCards, config } from "../components/array.js";
+import { Card } from "../components/Card .js";
+import { FormValidator } from "../components/FormValidator.js";
 
 const popups = document.querySelectorAll('.popup');
 const popupEditElement = document.querySelector(".popup_type_edit");
