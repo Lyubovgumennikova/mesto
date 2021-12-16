@@ -2,6 +2,7 @@ import '../pages/index.css';
 import { initialCards, config } from "../components/array.js";
 import { Card } from "../components/Card .js";
 import { FormValidator } from "../components/FormValidator.js";
+import  Section  from "../components/Section.js";
 
 const popups = document.querySelectorAll('.popup');
 const popupEditElement = document.querySelector(".popup_type_edit");
@@ -35,11 +36,21 @@ const enableValidation = (config) => {
   });
 };
 
-const createCard = (item) => {
-  const card = new Card(item, ".card-template", openPopup)
-  const cardElement = card.generateCard();
-  return renderCard(cardElement);
-};
+const createCard = new Section({ 
+  items: initialCards,
+  renderer: (cardItem) => {
+            const card = new Card(cardItem, ".card-template")
+            const cardElement = card.generateCard();
+            createCard.addItem(cardElement);
+  } 
+}, cards);
+createCard.renderItems()
+
+// const createCard = (item) => {
+//   const card = new Card(item, ".card-template", openPopup)
+//   const cardElement = card.generateCard();
+//   return renderCard(cardElement);
+// };
 
 function submitCardsForm(evt) {
     evt.preventDefault();
@@ -54,13 +65,13 @@ function submitCardsForm(evt) {
   return createCard(addInputCard);
 }
 
-function renderCard(element) {
-  cards.prepend(element);
-}
+// function renderCard(element) {
+//   cards.prepend(element);
+// }
 
-initialCards.forEach((element) => {
-  return createCard(element);
-});
+// initialCards.forEach((element) => {
+//   return createCard(element);
+// });
 
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
