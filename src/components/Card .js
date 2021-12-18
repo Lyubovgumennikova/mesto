@@ -1,13 +1,9 @@
-const popupImageElement = document.querySelector(".popup_type_image");
-const imageTextPopup = popupImageElement.querySelector(".popup__text-image");
-const imageCardPopup = popupImageElement.querySelector(".popup__mask-group");
-
 export class Card {
-  constructor(data, cardSelector, openPopup) {
+  constructor(data, cardSelector, handleCardClick) {
     this._link = data.link;
     this._name = data.name;
     this._cardSelector = cardSelector;
-    this._openPopup = openPopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -33,13 +29,11 @@ export class Card {
     // Вернём элемент наружу
     return this._element;
   }
-  // добавляtv все обработчики в одном месте (слушатели)
+  
   _setEventListeners() {
     this._cardImage
-      .addEventListener("click", () => { 
-        this._handleOpenPopup(); 
-    }); 
-
+      .addEventListener("click", this._handleCardClick);  
+    
     this._likeButton
       .addEventListener("click", () => {
         this._likeClick();
@@ -60,12 +54,5 @@ export class Card {
   _deleteClick() {
     this._element.closest(".element").remove();
     this._element = null;
-  }
-
-  _handleOpenPopup() {
-    imageCardPopup.src = this._link;
-    imageCardPopup.alt = this._link;
-    imageTextPopup.textContent = this._name;
-    this._openPopup(popupImageElement)
   }
 }
