@@ -1,22 +1,32 @@
 import  Popup  from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-    constructor(popupElement, { formSubmitCallBack }) {
+    constructor(popupElement, {handleFormSubmit} ) {
         super(popupElement);
-        this._formSubmitCallBack = formSubmitCallBack;
+        this._handleFormSubmit = handleFormSubmit;
         this._form = this._popupElement.querySelector(".popup__content");
+        this._inputs = this._form.querySelectorAll(".popup__input");
         //this._submit = this._submit.bind(this);
     }
 
     setEventListeners() {
         super.setEventListeners();
-        //this._formSubmitCallBack.addEventListener("submit", submitProfileForm);
+
+        this._form.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+        
+           this._handleFormSubmit();  //this._getInputValues()
+        
+            this._form.reset();
+        });
     }
 
     closePopup() {
         super.closePopup();
-        //Input.value = "";
-       // cardInput.value = "";
+        this._inputs.forEach((input) => {
+            input.value = "";
+        })
+        this._form.reset();
     }
 
     // function submitProfileForm(evt) {

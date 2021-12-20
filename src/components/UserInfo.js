@@ -1,9 +1,9 @@
-export class UserInfo {
-    constructor(nameInput, jobInput, nameProfile, jobProfile) {
-        this._nik = nameInput;
-        this._job = jobInput;
-        this._nameProfile = nameProfile;
-        this._jobProfile = jobProfile;
+export default class UserInfo {
+    constructor({nameProfile, jobProfile}) {
+        this._nik = nameProfile;
+        this._job = jobProfile;
+        // this._nameProfile = nameProfile;
+        // this._jobProfile = jobProfile;
     }
 
     getUserInfo() {
@@ -16,7 +16,12 @@ export class UserInfo {
     }
 
     setUserInfo() {
-        this._nik.textContent = nameInput.value;
-        this._job.textContent = jobInput.value;
+        const userInfo = {
+            nik: this._nik.value,
+            job: this._job.value
+        // this._nik.textContent = nik;
+        // this._job.textContent = job;
+        }
+        return userInfo
     }
 }
