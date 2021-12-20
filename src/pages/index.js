@@ -1,13 +1,12 @@
-import '../pages/index.css';
+import "../pages/index.css";
 import { initialCards, config } from "../components/array.js";
 import { Card } from "../components/Card .js";
 import { FormValidator } from "../components/FormValidator.js";
-import  Section  from "../components/Section.js";
-import  PopupWithForm  from "../components/PopupWithForm.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 
-const popups = document.querySelectorAll('.popup');
 const popupEditElement = document.querySelector(".popup_type_edit");
 const popupCardElement = document.querySelector(".popup_type_new-card");
 
@@ -30,75 +29,50 @@ const cardInput = popupCardElement.querySelector(".popup__input_card_image");
 
 const popupImageElement = document.querySelector(".popup_type_image");
 
-const popupWithImage = new PopupWithImage(popupImageElement);
-popupWithImage.setEventListeners();
+const formValidators = {};
 
 const handleCardClick = (evt) => {
   const data = {
-link: evt.target.src,
-text: evt.target.closest(".element").querySelector(".element__text").textContent,
-  }
+    link: evt.target.src,
+    text: evt.target.closest(".element").querySelector(".element__text")
+      .textContent,
+  };
   popupWithImage.openPopup(data);
-} 
-
-const formValidators = {}
+};
 
 const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-    const validateForm = new FormValidator(config, formElement)
-    formValidators[ formElement.name ] = validateForm;
+    const validateForm = new FormValidator(config, formElement);
+    formValidators[formElement.name] = validateForm;
     validateForm.enableValidation();
   });
 };
 
-// const createCard = new Section({ 
-//   items: initialCards,
-//   renderer: (cardItem) => {
-//             const card = new Card(cardItem, ".card-template", handleCardClick) //, openPopup
-//             const cardElement = card.generateCard();
-//             createCard.addItem(cardElement);
-//   } 
-// }, cards);
-const createCard = (data) => { 
-            const card = new Card(data, ".card-template", handleCardClick) //, openPopup
-            const cardElement = card.generateCard();
-            return cardElement;
+const popupWithImage = new PopupWithImage(popupImageElement);
+const userInfo = new UserInfo({ nameProfile, jobProfile });
+
+const createCard = (data) => {
+  const card = new Card(data, ".card-template", handleCardClick); //, openPopup
+  const cardElement = card.generateCard();
+  return cardElement;
 };
 
 const section = new Section(
-  {items: initialCards,
+  {
+    items: initialCards,
     renderer: (item) => {
       section.addItem(createCard(item));
     },
   },
-  cards);
+  cards
+);
 
-
-
-  section.renderItems()
-
-const userInfo = new UserInfo({ nameProfile, jobProfile });
-const popupInfo = new PopupWithForm(popupEditElement, (data) => submitProfileForm (data))
-// const popupCard = new PopupWithForm(popupCardElement, (data) => submitCardsForm (data))
-// const popupInfo = new PopupWithForm({popupEditElement, 
-//   handleFormSubmit: ({ nameProfile, jobProfile }) => {
-//     const userInfo = new UserInfo({ nameProfile, jobProfile });
-//     userInfo.setUserInfo()
-//   } //formSubmitProfile (data)
-// })
-
-
-popupOpenButtonElement.addEventListener("click", function () {
-   //popupInfo.getUserInfo()  //(popupCardElement);
-  const data = userInfo.getUserInfo();
-  nameInput.value = data.nik;
-  jobInput.value = data.job;
-  popupInfo.openPopup(popupEditElement);
-  popupInfo.setEventListeners();
-
-  //openPopup(popupEditElement);
-  formValidators[ formProfileElement.name ].resetValidation();
+const popupInfo = new PopupWithForm(popupEditElement, {
+  handleFormSubmit: () => {
+    userInfo.setUserInfo();
+    popupInfo.closePopup();
+  },
 });
 
 const popupCard = new PopupWithForm(popupCardElement, {
@@ -107,67 +81,27 @@ const popupCard = new PopupWithForm(popupCardElement, {
       name: mestInput.value,
       link: cardInput.value,
     };
-    section.addItem(createCard(item ));
+    section.addItem(createCard(item));
     popupCard.closePopup();
-  }
-  
-})
+  },
+});
 
 popupAddButtonElement.addEventListener("click", function () {
-    popupCard.openPopup();
-    popupCard.setEventListeners();
-  formValidators[ formCardElement.name ].resetValidation();
-}); 
+  popupCard.openPopup();
+  popupCard.setEventListeners();
+  formValidators[formCardElement.name].resetValidation();
+});
 
-function submitCardsForm() {
-    const item = {
-    name: mestInput.value,
-    link: cardInput.value,
-  };
+popupOpenButtonElement.addEventListener("click", function () {
+  const data = userInfo.getUserInfo();
+  nameInput.value = data.nik;
+  jobInput.value = data.job;
+  popupInfo.openPopup(popupEditElement);
+  popupInfo.setEventListeners();
 
-  const formRenderer = new Section({
-    data: []
-  }, formCardElement);
-  
-  const formElement = popupCard.generateCard();
-  
-  formRenderer.addItem(formElement);
-  // closePopup(popupCardElement);
-  // mestInput.value = "";
-  // cardInput.value = "";
-    // createCard.generateCard(addInputCard);
-    //return createCard.addItem(addInputCard)
-    // addInputCard.generateCard();
-    // addInputCard.addItem();  
-    // renderer(
-    //   createCard ({addInputCard}))  
-    //({ addInputCard, renderer }, containerSelector)
-      //createCard.generateCard({ addInputCard },)
-    
-    //return createCard.renderer({addInputCard})  //createCard({renderer: addInputCard},)
-}
+  formValidators[formProfileElement.name].resetValidation();
+});
 
-
-function formSubmitProfile(data) {
-  // evt.preventDefault();
-  const inputsPopup = data
-  userInfo.setUserInfo(inputsPopup.nameInput, inputsPopup.jobInput);
-  popupInfo.clocePopup(popupEditElement);
-}
-
-
-function submitProfileForm(data) {
-  //evt.preventDefault(popupEditElement);
-  const inputsPopup = data
-  userInfo.setUserInfo(inputsPopup.nik, inputsPopup.job)
-  // data.nik = nameInput.textContent;
-  // data.job = jobInput.textContent;
-  // const data = userInfo.setUserInfo();
-  
-  popupInfo.closePopup(popupEditElement);
-}
-
-// nameInput.value = data.nik;
-//   jobInput.value = data.job;
-
+popupWithImage.setEventListeners();
+section.renderItems();
 enableValidation(config);

@@ -6,7 +6,6 @@ export default class PopupWithForm extends Popup {
         this._handleFormSubmit = handleFormSubmit;
         this._form = this._popupElement.querySelector(".popup__content");
         this._inputs = this._form.querySelectorAll(".popup__input");
-        //this._submit = this._submit.bind(this);
     }
 
     setEventListeners() {
@@ -15,9 +14,8 @@ export default class PopupWithForm extends Popup {
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
         
-           this._handleFormSubmit();  //this._getInputValues()
-        
-            this._form.reset();
+        this._handleFormSubmit(this._getInputValues());
+        //    this._form.reset();
         });
     }
 
@@ -29,20 +27,10 @@ export default class PopupWithForm extends Popup {
         this._form.reset();
     }
 
-    // function submitProfileForm(evt) {
-    //     evt.preventDefault(popupEditElement);
-    
-    //     nameProfile.textContent = nameInput.value;
-    //     jobProfile.textContent = jobInput.value;
-    //     closePopup(popupEditElement);
-    // }
-
     _getInputValues() {
-        this._add
-        .addEventListener("click", function () {
-            openPopup();
-            formValidators[ formCardElement.name ].resetValidation();
-        });
-
+        const data = {}
+        this._inputs.forEach(input => data[input.name] = input.value);
+    
+        return data;
     }
 }

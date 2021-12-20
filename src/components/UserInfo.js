@@ -2,8 +2,6 @@ export default class UserInfo {
     constructor({nameProfile, jobProfile}) {
         this._nik = nameProfile;
         this._job = jobProfile;
-        // this._nameProfile = nameProfile;
-        // this._jobProfile = jobProfile;
     }
 
     getUserInfo() {
@@ -16,12 +14,7 @@ export default class UserInfo {
     }
 
     setUserInfo() {
-        const userInfo = {
-            nik: this._nik.value,
-            job: this._job.value
-        // this._nik.textContent = nik;
-        // this._job.textContent = job;
-        }
-        return userInfo
+        this._job.textContent =  job.value;
+        this._nik.textContent =   nik.value; 
     }
 }
