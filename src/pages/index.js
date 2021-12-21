@@ -52,43 +52,32 @@ const enableValidation = (config) => {
 const popupWithImage = new PopupWithImage(popupImageElement);
 const userInfo = new UserInfo({ nameProfile, jobProfile });
 
-const createCard = (data) => {
-  const card = new Card(data, ".card-template", handleCardClick); //, openPopup
-  const cardElement = card.generateCard();
-  return cardElement;
-};
-
-const section = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      section.addItem(createCard(item));
+const cardsList = new Section(
+  {items: initialCards,
+    renderer: (card) => {
+      const createCard = new Card(card, ".card-template", handleCardClick);
+      const cardElement = createCard.generateCard();
+        return cardElement;
     },
   },
-  cards
-);
+cards);
 
 const popupInfo = new PopupWithForm(popupEditElement, {
-  handleFormSubmit: () => {
-    userInfo.setUserInfo();
+  handleFormSubmit: (data) => {
+    userInfo.setUserInfo(data);
     popupInfo.closePopup();
   },
 });
 
 const popupCard = new PopupWithForm(popupCardElement, {
-  handleFormSubmit: () => {
-    const item = {
-      name: mestInput.value,
-      link: cardInput.value,
-    };
-    section.addItem(createCard(item));
+  handleFormSubmit: (data) => {
+    cardsList.addItem(data );
     popupCard.closePopup();
   },
 });
 
 popupAddButtonElement.addEventListener("click", function () {
   popupCard.openPopup();
-  popupCard.setEventListeners();
   formValidators[formCardElement.name].resetValidation();
 });
 
@@ -97,11 +86,12 @@ popupOpenButtonElement.addEventListener("click", function () {
   nameInput.value = data.nik;
   jobInput.value = data.job;
   popupInfo.openPopup(popupEditElement);
-  popupInfo.setEventListeners();
-
+  
   formValidators[formProfileElement.name].resetValidation();
 });
 
+popupInfo.setEventListeners();
+popupCard.setEventListeners();
 popupWithImage.setEventListeners();
-section.renderItems();
+cardsList.renderItems();
 enableValidation(config);

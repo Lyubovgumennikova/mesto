@@ -52,7 +52,7 @@ export class Card {
   }
 
   _deleteClick() {
-    this._element.closest(".element").remove();
+    this._element.remove();
     this._element = null;
   }
 }
