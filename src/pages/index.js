@@ -1,5 +1,5 @@
 import "../pages/index.css";
-import { initialCards, config } from "../components/array.js";
+import { initialCards, config } from "../utils/array.js";
 import { Card } from "../components/Card .js";
 import { FormValidator } from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -24,15 +24,12 @@ const nameInput = popupEditElement.querySelector(".popup__input_prof_name");
 const jobInput = popupEditElement.querySelector(".popup__input_prof_job");
 
 const formCardElement = popupCardElement.querySelector(".popup__content");
-const mestInput = popupCardElement.querySelector(".popup__input_card_name");
-const cardInput = popupCardElement.querySelector(".popup__input_card_image");
-
 const popupImageElement = document.querySelector(".popup_type_image");
 
 const formValidators = {};
 
-const handleCardClick = (evt) => {
-  const data = {
+const handleCardClick = (data) => {
+  data = {
     link: evt.target.src,
     text: evt.target.closest(".element").querySelector(".element__text")
       .textContent,
