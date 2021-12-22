@@ -28,8 +28,8 @@ const popupImageElement = document.querySelector(".popup_type_image");
 
 const formValidators = {};
 
-const handleCardClick = (data) => {
-  data = {
+const handleCardClick = (evt) => {
+  const data = {
     link: evt.target.src,
     text: evt.target.closest(".element").querySelector(".element__text")
       .textContent,
