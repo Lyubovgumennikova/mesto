@@ -5,9 +5,9 @@ export default class Api {
     }
 
     getInitialCards() {//     •	получить список всех карточек в виде массива (GET)
-        return fetch('${this._url}cards', {
+        return fetch(this._url, {
             method: 'GET',
-            headers: this._headers,
+            headers: this._headers
             
         })
     }
