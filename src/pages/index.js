@@ -36,7 +36,28 @@ const api = new Api({
     "content-type": "application/json"
   }
 });
-api.getInitialCards();
+const cardss = api.getInitialCards();
+cardss.then((data) => {
+  const cardsList = new Section(
+    {items: data,
+      renderer: (card) => {
+        const createCard = new Card(card, ".card-template", handleCardClick);
+   // const cardElement = createCard.addItem(generateCard(card));
+      const cardElement = createCard.generateCard();
+      // cardsList.addItem(createCard(card))
+      //createCard.addItem(card)
+        //const cardElement = createCard.addItem();
+        //createCard.addItem();
+        //cardsList.addItem(createCard(item))
+        return cardElement;
+      },
+  
+      
+    },
+  cards);
+  cardsList.renderItems()
+} )
+api.getUserInfo();
 
 
 const handleCardClick = (evt) => {
