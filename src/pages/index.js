@@ -29,6 +29,8 @@ const popupImageElement = document.querySelector(".popup_type_image");
 
 const formValidators = {};
 
+let userId; //, addCardLike, deleteCardLike;
+
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-33/',
   headers: {
@@ -36,10 +38,10 @@ const api = new Api({
     "content-type": "application/json"
   }
 });
-const cardss = api.getInitialCards();
-cardss.then((data) => {
+//const cardss = api.getInitialCards();
+//cardss.then((data) => {
   const cardsList = new Section(
-    {items: data,
+    {//items: data,
       renderer: (card) => {
         const createCard = new Card(card, ".card-template", handleCardClick);
    // const cardElement = createCard.addItem(generateCard(card));
@@ -55,10 +57,19 @@ cardss.then((data) => {
       
     },
   cards);
-  cardsList.renderItems()
-} )
-api.getUserInfo();
+  //cardsList.renderItems()
+//} )
+// api.getUserInfo();
+// api.editProfile(data)
+const UserInfoData = [api.getUserInfo(), api.getInitialCards()];
 
+Promise.all(UserInfoData)
+  .then(([userData, items]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    //userInfo.setUserAvatar(userData);
+    cardsList.renderItems(items);
+  }).catch((err) => alert(err));
 
 const handleCardClick = (evt) => {
   const data = {
@@ -81,27 +92,23 @@ const enableValidation = (config) => {
 const popupWithImage = new PopupWithImage(popupImageElement);
 const userInfo = new UserInfo({ nameProfile, jobProfile });
 
-const cardsList = new Section(
-  {items: initialCards,
-    renderer: (card) => {
-      const createCard = new Card(card, ".card-template", handleCardClick);
-      const cardElement = createCard.generateCard();
-        return cardElement;
-    },
-  },
-cards);
-
 const popupInfo = new PopupWithForm(popupEditElement, {
   handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data);
-    popupInfo.closePopup();
+    api.editProfile(data)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+      popupInfo.closePopup();
+    }).catch((err) => console.log(err));
   },
 });
 
 const popupCard = new PopupWithForm(popupCardElement, {
   handleFormSubmit: (data) => {
-    cardsList.addItem(data );
-    popupCard.closePopup();
+    api.addNewCard(data)
+    .then((data) => {
+      cardsList.addItem(data );
+      popupCard.closePopup();
+    }).catch((err) => alert(err))
   },
 });
 
@@ -122,5 +129,5 @@ popupOpenButtonElement.addEventListener("click", function () {
 popupInfo.setEventListeners();
 popupCard.setEventListeners();
 popupWithImage.setEventListeners();
-cardsList.renderItems();
+
 enableValidation(config);

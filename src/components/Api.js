@@ -4,16 +4,33 @@ export default class Api {
         this._headers = config.headers;
     }
 
+    _errorHandler(res) {
+        if (res.ok) {
+            return res.json();
+        } else {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+    }
+
     getInitialCards() {
     //     •	получить список всех карточек в виде массива (GET)
         return fetch(`${this._url}cards`, {
             method: "GET",
             headers: this._headers,
-        }).then((res) => {
-            return res.json();
-        });
+        }).then((res) => this._errorHandler(res));
     }
-  // •	добавить карточку (POST)
+
+    addNewCard(data) {  //   •	добавить карточку (POST)
+        return fetch(`${this._url}cards`, {
+            method: "POST",
+            headers: this._headers,
+            body: JSON.stringify({
+                name: data.name,
+                link: data.link,
+                    
+                }),
+        }).then((res) => this._errorHandler(res));
+    }
   // •	удалить карточку (DELETE)
     getUserInfo() {    //получить данные пользователя (GET)
         return fetch(`${this._url}users/me`, {
@@ -30,12 +47,10 @@ export default class Api {
             headers: this._headers,
        
         body: JSON.stringify({
-            name: data.name,
+            name: data.nik,
             about: data.job,
           }),
-        }).then((res) => {
-            return res.json();
-        });
+        }).then((res) => this._errorHandler(res));
     }
   // •	заменить аватар (PATCH)
   // •	“залайкать” карточку (PUT)
