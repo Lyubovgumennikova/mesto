@@ -10,15 +10,20 @@ import Api from "../components/Api.js"
 
 const popupEditElement = document.querySelector(".popup_type_edit");
 const popupCardElement = document.querySelector(".popup_type_new-card");
+const popupAvatardElement = document.querySelector(".popup_type_avatar");
+const popupDeleteCardElement = document.querySelector(".popup_type_delete");
 
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
+const popupAvatarButtonElement = document.querySelector(".profile__avatar-button-edit");
+const popupCardDeleteElement = document.querySelector(".element__remove-button");
 
 const cards = document.querySelector(".elements");
 
 const profilElement = document.querySelector(".profile");
 const nameProfile = profilElement.querySelector(".profile__info-name");
 const jobProfile = profilElement.querySelector(".profile__info-job");
+const avatarProfile = profilElement.querySelector(".profile__avatar");
 
 const formProfileElement = popupEditElement.querySelector(".popup__content");
 const nameInput = popupEditElement.querySelector(".popup__input_prof_name");
@@ -38,36 +43,27 @@ const api = new Api({
     "content-type": "application/json"
   }
 });
-//const cardss = api.getInitialCards();
-//cardss.then((data) => {
-  const cardsList = new Section(
-    {//items: data,
+
+const cardsList = new Section(
+  {//items: data,
       renderer: (card) => {
         const createCard = new Card(card, ".card-template", handleCardClick);
    // const cardElement = createCard.addItem(generateCard(card));
       const cardElement = createCard.generateCard();
-      // cardsList.addItem(createCard(card))
-      //createCard.addItem(card)
-        //const cardElement = createCard.addItem();
-        //createCard.addItem();
-        //cardsList.addItem(createCard(item))
         return cardElement;
       },
   
       
-    },
+  },
   cards);
-  //cardsList.renderItems()
-//} )
-// api.getUserInfo();
-// api.editProfile(data)
+
 const UserInfoData = [api.getUserInfo(), api.getInitialCards()];
 
 Promise.all(UserInfoData)
   .then(([userData, items]) => {
     userId = userData._id;
     userInfo.setUserInfo(userData);
-    //userInfo.setUserAvatar(userData);
+    userInfo.setUserAvatar(userData);
     cardsList.renderItems(items);
   }).catch((err) => alert(err));
 
@@ -90,7 +86,7 @@ const enableValidation = (config) => {
 };
 
 const popupWithImage = new PopupWithImage(popupImageElement);
-const userInfo = new UserInfo({ nameProfile, jobProfile });
+const userInfo = new UserInfo({ nameProfile, jobProfile, avatarProfile });
 
 const popupInfo = new PopupWithForm(popupEditElement, {
   handleFormSubmit: (data) => {
@@ -102,19 +98,39 @@ const popupInfo = new PopupWithForm(popupEditElement, {
   },
 });
 
+const popupAvatar = new PopupWithForm(popupAvatardElement, {
+  handleFormSubmit: (data) => {
+    api.editAvatar(data)
+    .then((data) => {
+      userInfo.setUserAvatar(data);
+      popupAvatar.closePopup();
+    }).catch((err) => console.log(err));
+  },
+});
+
 const popupCard = new PopupWithForm(popupCardElement, {
   handleFormSubmit: (data) => {
     api.addNewCard(data)
     .then((data) => {
       cardsList.addItem(data );
       popupCard.closePopup();
-    }).catch((err) => alert(err))
+    }).catch((err) => console.log(err));
   },
 });
+
+// popupCardDeleteElement.addEventListener("click", function () {
+//   popupDeleteCardElement.openPopup();
+//   formValidators[formProfileElement.name].resetValidation();
+// });
 
 popupAddButtonElement.addEventListener("click", function () {
   popupCard.openPopup();
   formValidators[formCardElement.name].resetValidation();
+});
+
+popupAvatarButtonElement.addEventListener("click", function () {
+  popupAvatar.openPopup();
+  formValidators[formProfileElement.name].resetValidation();
 });
 
 popupOpenButtonElement.addEventListener("click", function () {
@@ -129,5 +145,6 @@ popupOpenButtonElement.addEventListener("click", function () {
 popupInfo.setEventListeners();
 popupCard.setEventListeners();
 popupWithImage.setEventListeners();
+popupAvatar.setEventListeners();
 
 enableValidation(config);

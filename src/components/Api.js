@@ -12,8 +12,7 @@ export default class Api {
         }
     }
 
-    getInitialCards() {
-    //     •	получить список всех карточек в виде массива (GET)
+    getInitialCards() {  //     •	получить список всех карточек в виде массива (GET)
         return fetch(`${this._url}cards`, {
             method: "GET",
             headers: this._headers,
@@ -31,7 +30,15 @@ export default class Api {
                 }),
         }).then((res) => this._errorHandler(res));
     }
-  // •	удалить карточку (DELETE)
+
+    deleteCard(data) { // •	удалить карточку (DELETE)
+        return fetch(`${this._url}}cards/${data}`, {
+            method: "DELETE",
+            headers: this._headers,
+            
+        }).then((res) => this._errorHandler(res));
+    }
+
     getUserInfo() {    //получить данные пользователя (GET)
         return fetch(`${this._url}users/me`, {
             method: "GET",
@@ -45,15 +52,25 @@ export default class Api {
         return fetch(`${this._url}users/me`, {
             method: "PATCH",
             headers: this._headers,
-       
-        body: JSON.stringify({
-            name: data.nik,
-            about: data.job,
-          }),
+            body: JSON.stringify({
+                name: data.nik,
+                about: data.job,
+            }),
         }).then((res) => this._errorHandler(res));
     }
-  // •	заменить аватар (PATCH)
+    editAvatar(data) {  // •	заменить аватар (PATCH)
+        return fetch(`${this._url}users/me/avatar`, {
+            method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: data.avatar,
+            }),
+        }).then((res) => this._errorHandler(res));
+    }
   // •	“залайкать” карточку (PUT)
   // •	удалить лайк карточки (DELETE)
-  // Это лишь минимальный список методов. помимо них вы можете написать вспомогательные методы. Например метод, который отдаст промис, ожидающий исполнение нескольких методов класса (например, подумайте какие методы надо исполнить прежде чем начать отрисовку и прочее на странице, и можете посмотрите в сторону Promise.all - https://yadi.sk/d/llP56OMEAOKMVg)
+  // Это лишь минимальный список методов. помимо них вы можете написать вспомогательные методы. 
+//   Например метод, который отдаст промис, ожидающий исполнение нескольких методов класса (например, 
+//     подумайте какие методы надо исполнить прежде чем начать отрисовку и прочее на странице, и можете 
+//     посмотрите в сторону Promise.all - https://yadi.sk/d/llP56OMEAOKMVg)
 }

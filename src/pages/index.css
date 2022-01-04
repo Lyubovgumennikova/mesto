@@ -6,6 +6,7 @@
 @import "../blocks/header/header.css";
 @import "../blocks/header/__logo/header__logo.css";
 @import "../blocks/profile/profile.css";
+@import "../blocks/profile/__edit/profile__edit.css";
 @import "../blocks/profile/__avatar/profile__avatar.css";
 @import "../blocks/profile/__info/profile__info.css";
 @import "../blocks/profile/__info-nik/profile__info-nik.css";
@@ -13,14 +14,17 @@
 @import "../blocks/profile/__info-job/profile__info-job.css";
 @import "../blocks/profile/__button-add/profile__button-add.css";
 @import "../blocks/profile/__button-edit/profile__button-edit.css";
+@import "../blocks/profile/__avatar-button-edit/profile__avatar-button-edit.css";
 @import "../blocks/elements/elements.css";
 @import "../blocks/element/element.css";
 @import "../blocks/element/__rectangle/element__rectangle.css";
 @import "../blocks/element/__mask-group/element__mask-group.css";
 @import "../blocks/element/__text/element__text.css";
 @import "../blocks/element/__remove-button/element__remove-button.css";
+@import "../blocks/element/__like-container/element__like-container.css";
 @import "../blocks/element/__vector/element__vector.css";
 @import "../blocks/element/__vector/_active/element__vector_active.css";
+@import "../blocks/element/__vector-container/element__vector-container.css";
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__text/footer__text.css";
 @import "../blocks/popup/popup.css";
