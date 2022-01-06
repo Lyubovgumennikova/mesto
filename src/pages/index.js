@@ -46,10 +46,21 @@ const api = new Api({
 
 const cardsList = new Section(
   {//items: data,
-      renderer: (card) => {
-        const createCard = new Card(card, ".card-template", handleCardClick);
-   // const cardElement = createCard.addItem(generateCard(card));
-      const cardElement = createCard.generateCard();
+      renderer: (data) => {
+        const createCard = new Card(
+          data, {
+            handleCardClick: () => {
+              popupWithImage.openPopup(data); // ...что должно произойти при клике на картинку
+            },
+        //   handleLikeClick: (card) => {
+        //    // ...что должно произойти при клике на лайк
+        //   },
+        //   handleDeleteIconClick: (card) => {
+        //     //...что должно произойти при клике на удаление
+        //   }
+          }, ".card-template")
+        
+      const cardElement = createCard.generateCard(data);
         return cardElement;
       },
   
@@ -66,15 +77,6 @@ Promise.all(UserInfoData)
     userInfo.setUserAvatar(userData);
     cardsList.renderItems(items);
   }).catch((err) => alert(err));
-
-const handleCardClick = (evt) => {
-  const data = {
-    link: evt.target.src,
-    text: evt.target.closest(".element").querySelector(".element__text")
-      .textContent,
-  };
-  popupWithImage.openPopup(data);
-};
 
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
