@@ -21,6 +21,7 @@
 @import "../blocks/element/__mask-group/element__mask-group.css";
 @import "../blocks/element/__text/element__text.css";
 @import "../blocks/element/__remove-button/element__remove-button.css";
+@import "../blocks/element/__remove-button/_active/element__remove-button_active.css";
 @import "../blocks/element/__like-container/element__like-container.css";
 @import "../blocks/element/__vector/element__vector.css";
 @import "../blocks/element/__vector/_active/element__vector_active.css";

@@ -9,8 +9,10 @@
     background: url(../../../images/Group.svg)center no-repeat;
     position: absolute;
     z-index: 1;
+    display: none;
 }
 
 .element__remove-button:hover {
     opacity: 0.5;
 }
+

@@ -32,6 +32,8 @@ const jobInput = popupEditElement.querySelector(".popup__input_prof_job");
 const formCardElement = popupCardElement.querySelector(".popup__content");
 const popupImageElement = document.querySelector(".popup_type_image");
 
+const formAvatarElement = popupAvatardElement.querySelector(".popup__content");
+
 const formValidators = {};
 
 let userId; //, addCardLike, deleteCardLike;
@@ -55,10 +57,10 @@ const cardsList = new Section(
         //   handleLikeClick: (card) => {
         //    // ...что должно произойти при клике на лайк
         //   },
-        //   handleDeleteIconClick: (card) => {
-        //     //...что должно произойти при клике на удаление
-        //   }
-          }, ".card-template")
+          handleDeleteIconClick: (card) => {
+            //...что должно произойти при клике на удаление
+          }
+          }, ".card-template", userId)
         
       const cardElement = createCard.generateCard(data);
         return cardElement;
@@ -132,7 +134,7 @@ popupAddButtonElement.addEventListener("click", function () {
 
 popupAvatarButtonElement.addEventListener("click", function () {
   popupAvatar.openPopup();
-  formValidators[formProfileElement.name].resetValidation();
+  formValidators[formAvatarElement.name].resetValidation();
 });
 
 popupOpenButtonElement.addEventListener("click", function () {
