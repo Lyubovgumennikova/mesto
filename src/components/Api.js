@@ -32,7 +32,7 @@ export default class Api {
     }
 
     deleteCard(data) { // •	удалить карточку (DELETE)
-        return fetch(`${this._url}}cards/${data}`, {
+        return fetch(`${this._url}cards/${data._cardId}`, {
             method: "DELETE",
             headers: this._headers,
             

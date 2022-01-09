@@ -1,5 +1,5 @@
 export class Card {
-  constructor(data, {handleCardClick}, cardSelector, userId)  {
+  constructor(data, {handleCardClick, handleDeleteIconClick}, cardSelector, userId)  {
     this._link = data.link;
     this._name = data.name;
     this._cardId = data._id;
@@ -7,7 +7,7 @@ export class Card {
     this._likes = data.likes;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-    // this._handleDeleteIconClick = handleDeleteIconClick;
+    this._handleDeleteIconClick = handleDeleteIconClick;
     this._userId =  userId;
   }
 
@@ -30,7 +30,7 @@ export class Card {
     this._setEventListeners();
     // Добавим данные
     this._cardImage.src = this._link;
-    this._cardImage.alt = this._link;
+    this._cardImage.alt = this._name;
     this._cardText.textContent = this._name;
     // Вернём элемент наружу
     return this._element;
@@ -48,7 +48,8 @@ export class Card {
     if (this._ownerId === this._userId) {
       this._deleteButton.classList.add("element__remove-button_active");
       this._deleteButton.addEventListener("click", () =>
-      this._deleteClick()
+      this._handleDeleteIconClick(this)
+      // this._deleteClick()
       );
     }
   }
@@ -58,8 +59,14 @@ export class Card {
       .classList.toggle("element__vector_active");
   }
 
-  _deleteClick() {
-    this._element.remove();
+  deleteClick(card) {
+    card.remove();
     this._element = null;
+    // card = null;
+    // const data = {
+    //   card: this._element,
+    //   cardId: this._cardId,
+    // };
+    // this._handleDeleteIconClick(data);
   }
 }
