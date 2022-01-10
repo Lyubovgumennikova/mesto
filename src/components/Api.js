@@ -58,6 +58,7 @@ export default class Api {
             }),
         }).then((res) => this._errorHandler(res));
     }
+
     editAvatar(data) {  // •	заменить аватар (PATCH)
         return fetch(`${this._url}users/me/avatar`, {
             method: "PATCH",
@@ -67,8 +68,22 @@ export default class Api {
             }),
         }).then((res) => this._errorHandler(res));
     }
-  // •	“залайкать” карточку (PUT)
-  // •	удалить лайк карточки (DELETE)
+    
+    addCardLike(data) { // •	“залайкать” карточку (PUT)
+        return fetch(`${this._url}cards/${data._cardId}/likes`, {
+            method: "PUT",
+            headers: this._headers,
+            
+        }).then((res) => this._errorHandler(res));
+    }
+
+    deleteCardLike(data) { // •	удалить лайк карточки (DELETE)
+        return fetch(`${this._url}cards/${data._cardId}/likes`, {
+            method: "DELETE",
+            headers: this._headers,
+            
+        }).then((res) => this._errorHandler(res));
+    }
   // Это лишь минимальный список методов. помимо них вы можете написать вспомогательные методы. 
 //   Например метод, который отдаст промис, ожидающий исполнение нескольких методов класса (например, 
 //     подумайте какие методы надо исполнить прежде чем начать отрисовку и прочее на странице, и можете 

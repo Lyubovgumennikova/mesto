@@ -55,9 +55,19 @@ const cardsList = new Section(
           handleCardClick: () => {
             popupWithImage.openPopup(data); // ...что должно произойти при клике на картинку
           },
-          //   handleLikeClick: (card) => {
-          //    // ...что должно произойти при клике на лайк
-          //   },
+          handleLikeClick: (data) => { // ...что должно произойти при клике на лайк
+            if (!data._likeButton.classList.contains("element__vector_active")) {
+              return api.addCardLike(data) //  api.addCardLike(data);
+            } else {
+              return api.deleteCardLike(data);
+            }
+          //     addCardLike = (data) => {
+          //     return api.addCardLike(data);
+               // } 
+              //  deleteCardLike = (data) => {
+              //   return api.deleteCardLike(data);
+              // }
+          },
           handleDeleteIconClick: (data) => {
             popupDeleteCard.data = data;
             popupDeleteCard.openPopup(data);//...что должно произойти при клике на удаление
@@ -126,7 +136,6 @@ const popupDeleteCard = new PopupConfirm(popupDeleteCardElement, {
     api
     .deleteCard(data)
     .then( () => {
-      // data.card.remove();
       data.deleteClick(data._element) 
       popupDeleteCard.closePopup();
     }).catch((err) => console.log(err));
