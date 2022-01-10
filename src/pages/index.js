@@ -1,5 +1,6 @@
 import "../pages/index.css";
 import { initialCards, config } from "../utils/array.js";
+import {renderLoading} from "../utils/utils.js";
 import { Card } from "../components/Card .js";
 import { FormValidator } from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -21,6 +22,7 @@ const popupAvatarButtonElement = document.querySelector(".profile__avatar-button
 const popupCardDeleteElement = document.querySelector(".element__remove-button");
 
 const cards = document.querySelector(".elements");
+const buttonSubmit = document.querySelector(".popup__submit-button");
 
 const profilElement = document.querySelector(".profile");
 const nameProfile = profilElement.querySelector(".profile__info-name");
@@ -103,42 +105,57 @@ const userInfo = new UserInfo({ nameProfile, jobProfile, avatarProfile });
 
 const popupInfo = new PopupWithForm(popupEditElement, {
   handleFormSubmit: (data) => {
+    renderLoading(popupEditElement, true)
     api.editProfile(data)
     .then((data) => {
       userInfo.setUserInfo(data);
       popupInfo.closePopup();
-    }).catch((err) => console.log(err));
+    }).catch((err) => console.log(err))
+    .finally(() => {
+      renderLoading(popupEditElement, false); //buttonSubmit
+    });
   },
 });
 
 const popupAvatar = new PopupWithForm(popupAvatardElement, {
   handleFormSubmit: (data) => {
+    renderLoading(popupAvatardElement, true)
     api.editAvatar(data)
     .then((data) => {
       userInfo.setUserAvatar(data);
       popupAvatar.closePopup();
-    }).catch((err) => console.log(err));
+    }).catch((err) => console.log(err))
+    .finally(() => {
+      renderLoading(popupAvatardElement, false);
+    });
   },
 });
 
 const popupCard = new PopupWithForm(popupCardElement, {
   handleFormSubmit: (data) => {
+    renderLoading(popupCardElement, true)
     api.addNewCard(data)
     .then((data) => {
       cardsList.addItem(data );
       popupCard.closePopup();
-    }).catch((err) => console.log(err));
+    }).catch((err) => console.log(err))
+    .finally(() => {
+      renderLoading(popupCardElement, false);
+    });
   },
 });
 
 const popupDeleteCard = new PopupConfirm(popupDeleteCardElement, {
   handleFormSubmit: (data) => {
-    api
-    .deleteCard(data)
+    renderLoading(popupDeleteCardElement,true)
+    api.deleteCard(data)
     .then( () => {
       data.deleteClick(data._element) 
       popupDeleteCard.closePopup();
-    }).catch((err) => console.log(err));
+    }).catch((err) => console.log(err))
+    .finally(() => {
+      renderLoading(popupDeleteCardElement, false);
+    });
   },
 });
 
