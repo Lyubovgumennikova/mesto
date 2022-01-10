@@ -1,5 +1,5 @@
 import "../pages/index.css";
-import { initialCards, config } from "../utils/array.js";
+import { config } from "../utils/array.js";
 import {renderLoading} from "../utils/utils.js";
 import { Card } from "../components/Card .js";
 import { FormValidator } from "../components/FormValidator.js";
@@ -19,10 +19,8 @@ const popupDeleteCardElement = document.querySelector(".popup_type_delete");
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupAddButtonElement = document.querySelector(".profile__button-add");
 const popupAvatarButtonElement = document.querySelector(".profile__avatar-button-edit");
-const popupCardDeleteElement = document.querySelector(".element__remove-button");
 
 const cards = document.querySelector(".elements");
-const buttonSubmit = document.querySelector(".popup__submit-button");
 
 const profilElement = document.querySelector(".profile");
 const nameProfile = profilElement.querySelector(".profile__info-name");
@@ -35,11 +33,10 @@ const jobInput = popupEditElement.querySelector(".popup__input_prof_job");
 
 const formCardElement = popupCardElement.querySelector(".popup__content");
 const formAvatarElement = popupAvatardElement.querySelector(".popup__content");
-const formDeleteCardElement = popupDeleteCardElement.querySelector(".popup__content");
 
 const formValidators = {};
 
-let userId; //, addCardLike, deleteCardLike;
+let userId; 
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-33/',
@@ -48,6 +45,8 @@ const api = new Api({
     "content-type": "application/json"
   }
 });
+
+const UserInfoData = [api.getUserInfo(), api.getInitialCards()];
 
 const cardsList = new Section(
   {
@@ -63,12 +62,6 @@ const cardsList = new Section(
             } else {
               return api.deleteCardLike(data);
             }
-          //     addCardLike = (data) => {
-          //     return api.addCardLike(data);
-               // } 
-              //  deleteCardLike = (data) => {
-              //   return api.deleteCardLike(data);
-              // }
           },
           handleDeleteIconClick: (data) => {
             popupDeleteCard.data = data;
@@ -80,16 +73,6 @@ const cardsList = new Section(
     },
   },
   cards);
-
-const UserInfoData = [api.getUserInfo(), api.getInitialCards()];
-
-Promise.all(UserInfoData)
-  .then(([userData, items]) => {
-    userId = userData._id;
-    userInfo.setUserInfo(userData);
-    userInfo.setUserAvatar(userData);
-    cardsList.renderItems(items);
-  }).catch((err) => alert(err));
 
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
@@ -159,11 +142,6 @@ const popupDeleteCard = new PopupConfirm(popupDeleteCardElement, {
   },
 });
 
-// popupCardDeleteElement.addEventListener("click", function () {
-//   popupDeleteCardElement.openPopup();
-//   formValidators[formProfileElement.name].resetValidation();
-// });
-
 popupAddButtonElement.addEventListener("click", function () {
   popupCard.openPopup();
   formValidators[formCardElement.name].resetValidation();
@@ -190,3 +168,11 @@ popupAvatar.setEventListeners();
 popupDeleteCard.setEventListeners();
 
 enableValidation(config);
+
+Promise.all(UserInfoData)
+  .then(([userData, items]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    userInfo.setUserAvatar(userData);
+    cardsList.renderItems(items);
+  }).catch((err) => alert(err));
