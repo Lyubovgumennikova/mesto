@@ -56,15 +56,15 @@ const cardsList = new Section(
           handleCardClick: () => {
             popupWithImage.openPopup(data); // ...что должно произойти при клике на картинку
           },
-          handleLikeClick: (card) => { // ...что должно произойти при клике на лайк
-            if (!card.isLiked) { //!data._likeButton.classList.contains("element__vector_active")
-              api.addCardLike(card.likeClick())
-            .then((res) => {
-                card.updateLikes(res)
-            })
-            .catch((err) => {
-                console.log(err);
-            }); //  api.addCardLike(data);
+          handleLikeClick: (data) => { // ...что должно произойти при клике на лайк
+            if (!data.isLiked()) { //!data._likeButton.classList.contains("element__vector_active")
+              return api.addCardLike(data) //  api.addCardLike(data); 
+            // .then((res) => {
+            //     card.updateLikes(res)
+            // })
+            // .catch((err) => {
+            //     console.log(err);
+            // }); //  api.addCardLike(data);
             } else {
               return api.deleteCardLike(data);
             }
