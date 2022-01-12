@@ -46,7 +46,7 @@ const api = new Api({
   }
 });
 
-const UserInfoData = [api.getUserInfo(), api.getInitialCards()];
+const userInfoData = [api.getUserInfo(), api.getInitialCards()];
 
 const cardsList = new Section(
   {
@@ -56,9 +56,15 @@ const cardsList = new Section(
           handleCardClick: () => {
             popupWithImage.openPopup(data); // ...что должно произойти при клике на картинку
           },
-          handleLikeClick: (data) => { // ...что должно произойти при клике на лайк
-            if (!data._likeButton.classList.contains("element__vector_active")) {
-              return api.addCardLike(data) //  api.addCardLike(data);
+          handleLikeClick: (card) => { // ...что должно произойти при клике на лайк
+            if (!card.isLiked) { //!data._likeButton.classList.contains("element__vector_active")
+              api.addCardLike(card.likeClick())
+            .then((res) => {
+                card.updateLikes(res)
+            })
+            .catch((err) => {
+                console.log(err);
+            }); //  api.addCardLike(data);
             } else {
               return api.deleteCardLike(data);
             }
@@ -105,7 +111,7 @@ const popupAvatar = new PopupWithForm(popupAvatardElement, {
     renderLoading(popupAvatardElement, true)
     api.editAvatar(data)
     .then((data) => {
-      userInfo.setUserAvatar(data);
+      userInfo.setUserInfo(data); //setUserAvatar(data);
       popupAvatar.closePopup();
     }).catch((err) => console.log(err))
     .finally(() => {
@@ -116,14 +122,14 @@ const popupAvatar = new PopupWithForm(popupAvatardElement, {
 
 const popupCard = new PopupWithForm(popupCardElement, {
   handleFormSubmit: (data) => {
-    renderLoading(popupCardElement, true)
+    // renderLoading(true)
     api.addNewCard(data)
     .then((data) => {
       cardsList.addItem(data );
       popupCard.closePopup();
     }).catch((err) => console.log(err))
     .finally(() => {
-      renderLoading(popupCardElement, false);
+      popupCard.renderLoading(false);
     });
   },
 });
@@ -169,10 +175,9 @@ popupDeleteCard.setEventListeners();
 
 enableValidation(config);
 
-Promise.all(UserInfoData)
+Promise.all(userInfoData)
   .then(([userData, items]) => {
     userId = userData._id;
     userInfo.setUserInfo(userData);
-    userInfo.setUserAvatar(userData);
     cardsList.renderItems(items);
   }).catch((err) => alert(err));

@@ -3,6 +3,7 @@ export const renderLoading = (popup, isLoading ) => {
     if (isLoading) {
         currentActiveButton.textContent = "Выполняется...";
     } else {
-        currentActiveButton.textContent = 'Сохранить';
+        // currentActiveButton('reset')
+        currentActiveButton.textContent = 'Да';
     }
 };

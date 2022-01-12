@@ -17,9 +17,6 @@ export default class UserInfo {
     setUserInfo(userInfo) {
         this._nik.textContent = userInfo.name;
         this._job.textContent = userInfo.about;
-    }
-
-    setUserAvatar(userInfo) {
         this._avatar.src = userInfo.avatar;
     }
 }

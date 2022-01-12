@@ -30,6 +30,7 @@ export class Card {
     this._likeButton = this._element.querySelector(".element__vector");
     this._deleteButton = this._element.querySelector(".element__remove-button");
     this._likesContainer = this._element.querySelector(".element__vector-container");
+    this._isLiked = this._likeButton.classList.contains("element__vector_active")
     this._setEventListeners();
     // Добавим данные
     this._cardImage.src = this._link;
@@ -46,7 +47,8 @@ export class Card {
     
     this._likeButton
       .addEventListener("click", () => {
-        this._likeClick();
+        // this._likeClick();
+        this._handleLikeClick(this)
     });
 
     if (this._ownerId === this._userId) {
@@ -57,10 +59,10 @@ export class Card {
     }
   }
 
-  _likeClick() {
-    this._handleLikeClick(this)
+  likeClick() {
+    // this._handleLikeClick(this)
     // this._likesContainer.textContent = this._likes += 1;
-      
+    !data._likeButton.classList.contains("element__vector_active")
     .then((res) =>  {
       this._likesContainer.textContent = res.likes.length },
       this._likeButton.classList.toggle("element__vector_active")
