@@ -57,14 +57,8 @@ const cardsList = new Section(
             popupWithImage.openPopup(data); // ...что должно произойти при клике на картинку
           },
           handleLikeClick: (data) => { // ...что должно произойти при клике на лайк
-            if (!data.isLiked()) { //!data._likeButton.classList.contains("element__vector_active")
-              return api.addCardLike(data) //  api.addCardLike(data); 
-            // .then((res) => {
-            //     card.updateLikes(res)
-            // })
-            // .catch((err) => {
-            //     console.log(err);
-            // }); //  api.addCardLike(data);
+            if (!data.isLiked()) {
+              return api.addCardLike(data) 
             } else {
               return api.deleteCardLike(data);
             }
@@ -94,35 +88,32 @@ const userInfo = new UserInfo({ nameProfile, jobProfile, avatarProfile });
 
 const popupInfo = new PopupWithForm(popupEditElement, {
   handleFormSubmit: (data) => {
-    renderLoading(popupEditElement, true)
     api.editProfile(data)
     .then((data) => {
       userInfo.setUserInfo(data);
       popupInfo.closePopup();
     }).catch((err) => console.log(err))
     .finally(() => {
-      renderLoading(popupEditElement, false); //buttonSubmit
+      popupInfo.renderLoading(false);
     });
   },
 });
 
 const popupAvatar = new PopupWithForm(popupAvatardElement, {
   handleFormSubmit: (data) => {
-    renderLoading(popupAvatardElement, true)
     api.editAvatar(data)
     .then((data) => {
-      userInfo.setUserInfo(data); //setUserAvatar(data);
+      userInfo.setUserInfo(data);
       popupAvatar.closePopup();
     }).catch((err) => console.log(err))
     .finally(() => {
-      renderLoading(popupAvatardElement, false);
+      popupAvatar.renderLoading(false);
     });
   },
 });
 
 const popupCard = new PopupWithForm(popupCardElement, {
   handleFormSubmit: (data) => {
-    // renderLoading(true)
     api.addNewCard(data)
     .then((data) => {
       cardsList.addItem(data );

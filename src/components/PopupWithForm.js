@@ -14,12 +14,10 @@ export default class PopupWithForm extends Popup {
 
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
-        
             this._handleFormSubmit(this._getInputValues());
         });
 
         this._button.addEventListener("click", () => {
-            // this._likeClick();
             this.renderLoading(true)
         });
     }
@@ -39,24 +37,7 @@ export default class PopupWithForm extends Popup {
         if (isLoading) {
             this._button.textContent = "Выполняется...";
         } else {
-        //     // currentActiveButton('reset')
             this._button.textContent = 'Сохранить';
         }
-    //    return  buttonText  //{
-        // isLoading: false,
-        // buttonText: "Выполняется...",
-    //    }
-
-    //    if (isLoading) {
-    //     // return {
-    //         buttonText = "Выполняется..."
-    //     // } 
-    //   }
-        
-        // if (isLoading) {
-        //     this._buttonText = "Выполняется...";
-        //  }// else {
-        //     this._button.textContent = 'Сохранить';
-        // }
     }
 }

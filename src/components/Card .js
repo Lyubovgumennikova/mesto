@@ -48,7 +48,6 @@ export class Card {
     this._likeButton
       .addEventListener("click", () => {
         this._likeClick();
-        // this._handleLikeClick(this)
     });
 
     if (this._ownerId === this._userId) {
@@ -67,8 +66,6 @@ export class Card {
 
   _likeClick() {
     this._handleLikeClick(this)
-    // // this._likesContainer.textContent = this._likes += 1;
-    // !data._likeButton.classList.contains("element__vector_active")
     .then((res) =>  {
       this._likesContainer.textContent = res.likes.length },
       this._likeButton.classList.toggle("element__vector_active")
