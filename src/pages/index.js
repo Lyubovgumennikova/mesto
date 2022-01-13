@@ -120,6 +120,7 @@ const popupCard = new PopupWithForm(popupCardElement, {
       popupCard.closePopup();
     }).catch((err) => console.log(err))
     .finally(() => {
+      renderLoading(popupCardElement, false);
       popupCard.renderLoading(false);
     });
   },

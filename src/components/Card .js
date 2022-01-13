@@ -67,9 +67,9 @@ export class Card {
   _likeClick() {
     this._handleLikeClick(this)
     .then((res) =>  {
-      this._likesContainer.textContent = res.likes.length },
+      this._likesContainer.textContent = res.likes.length 
       this._likeButton.classList.toggle("element__vector_active")
-    ).catch((err) => alert(err));
+    }).catch((err) => alert(err));
   }
 
   deleteClick(card) {
